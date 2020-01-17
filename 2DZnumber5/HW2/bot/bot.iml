@@ -7,9 +7,23 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="tf-gpt-2-1.8.03" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="tf-gpt-2-1.8.03" level="project" />
     <orderEntry type="library" name="tf-gpt-2-1.8.02" level="project" />
     <orderEntry type="library" name="tf-gpt-2-1.8.01" level="project" />
     <orderEntry type="library" name="tf-gpt-2-1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.simiacryptus:tf-gpt-2:1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.simiacryptus:java-util:1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:proto:1.13.1" level="project" />
+    <orderEntry type="library" name="Maven: com.simiacryptus:tensorflow-model:1.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-api:1.8.0-beta2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-nop:1.7.30" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-simple:1.7.30" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow:1.14.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:libtensorflow_jni:1.14.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:libtensorflow:1.14.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:libtensorflow_jni_gpu:1.14.0" level="project" />
+
   </component>
 </module>

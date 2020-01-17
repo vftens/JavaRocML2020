@@ -26,8 +26,8 @@ public class HelloTensorFlow {
                  Tensor output = s.runner().fetch("MyConst").run().get(0)) {
                 System.out.println(new String(output.bytesValue(), "UTF-8"));
 
-                if (GPT2){
-                  tf_gpt2 tfg = new tf_gpt2(); // call gpt2
+                if (GPT2) {
+                    tf_gpt2 tfg = new tf_gpt2(); // call gpt2
                 }
 
             }
