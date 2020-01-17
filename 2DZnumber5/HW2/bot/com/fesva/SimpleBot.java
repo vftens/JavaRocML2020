@@ -1,7 +1,7 @@
 /**
  * Class SimpleBot
  *
- * @author Vitaly Feskov
+ * @author Vitaly Feskov,  from Sergey I.
  * @version 0.3.1 dated Dec 25, 2019
  */
 package com.fesva;
