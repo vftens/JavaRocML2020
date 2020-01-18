@@ -6,7 +6,7 @@ import org.tensorflow.Tensor;
 import org.tensorflow.TensorFlow;
 
 public class HelloTensorFlow {
-    public static final boolean GPT2 = false; //true; NOT WORKING NOW
+    public static final boolean GPT2 = false; //false; //true; NOT WORKING NOW
 
     public static void main(String args) throws Exception {
         try (Graph g = new Graph()) {

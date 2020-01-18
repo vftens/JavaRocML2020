@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public abstract class Main {
 
-
     private static ArrayList<String> deals = new ArrayList<>();
     private SimpleBot simpleBot;
 
@@ -17,11 +16,10 @@ public abstract class Main {
 
     public static void main(String[] args) throws Exception {
 
-        //boolean debug = true;
         String[] parts;
-        String inps;
+        String inp_s;
         boolean n_bool; // ƒÀﬂ ◊»—À¿
-        boolean s_bool;
+        boolean s_bool; // ƒÀﬂ —“–Œ »
         boolean s_bool1 = false; // ƒÀﬂ —“–Œ » Õ¿ 2-Ã Ã≈—“≈
 
         SimpleBot simpleBot = new SimpleBot();
@@ -35,10 +33,10 @@ public abstract class Main {
             int n = 1;
             System.out.println("Please, Input Your Command:");
             //String
-            inps = reader.readLine().trim();
-            if (inps.equals("EXIT")) break;
+            inp_s = reader.readLine().trim();
+            if (inp_s.equals("EXIT")) break;
             try {
-                parts = inps.split("\\s");
+                parts = inp_s.split("\\s");
                 try {
                     n = Integer.parseInt(parts[1]);
                     n_bool = true;
@@ -97,17 +95,16 @@ public abstract class Main {
             } catch (Exception e) {
                 System.out.println("MY Exception " + e);
             } finally {
-                System.out.println(simpleBot.sayInReturn(inps, true)); // œŒ√Œ¬Œ–»Ã
+                System.out.println(simpleBot.sayInReturn(inp_s, true)); // œŒ√Œ¬Œ–»Ã
             }
 
         } // end while
         HelloTensorFlow htf = new HelloTensorFlow();
-        htf.main("");
+        htf.main(""); // «¿œ”— ¿≈Ã
         // htf.wait(1);
         // TODO: adding working with TF and GPT2
 
     }
-
 
     //sayInReturn
 
@@ -119,6 +116,4 @@ public abstract class Main {
     public void setSimpleBot(SimpleBot simpleBot) {
         this.simpleBot = simpleBot;
     }
-
-    //=simpleBot.SimpleBot();
 }
