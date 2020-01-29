@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="target">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/package-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/target/member-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/target/hellotensorflow-1.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/type-search-index.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

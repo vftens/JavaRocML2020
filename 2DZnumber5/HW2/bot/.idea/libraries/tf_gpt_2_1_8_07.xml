@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="tf-gpt-2-1.8.02">
+  <library name="tf-gpt-2-1.8.07">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/production/bot/tf-gpt-2-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tf-gpt-2-1.8.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

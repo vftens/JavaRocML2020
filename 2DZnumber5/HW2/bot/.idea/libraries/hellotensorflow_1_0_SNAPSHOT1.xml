@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="hellotensorflow-1.0-SNAPSHOT1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/target/classes/target/classes/target/hellotensorflow-1.0-SNAPSHOT.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

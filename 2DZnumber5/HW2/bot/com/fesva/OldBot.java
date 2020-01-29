@@ -19,7 +19,7 @@ EDIT - заменять дело с указанным номером. DELETE - удалять. Примеры команд:
 import java.util.ArrayList;
 //import java.util.Map;
 
-public class bot {
+public class OldBot {
 
     private static ArrayList<String> deals = null;
     //if(inp == "LIST")LIST();
@@ -77,6 +77,6 @@ public class bot {
     }
 
     public static void setDeals(ArrayList<String> deals) {
-        bot.deals = deals;
+        OldBot.deals = deals;
     }
 }
