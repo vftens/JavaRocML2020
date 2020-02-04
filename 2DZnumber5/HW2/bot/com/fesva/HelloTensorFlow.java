@@ -30,9 +30,7 @@ public class HelloTensorFlow {
                 if (GPT2) {
                     tf_gpt2 tfg = new tf_gpt2(); // call gpt2
                 }
-
             }
-
         }
     }
 }

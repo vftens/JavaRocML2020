@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public abstract class Main {
+public  class Main {
 
     private static ArrayList<String> deals = new ArrayList<>();
-    private SimpleBot simpleBot;
+    public SimpleBot simpleBot;
 
     public static ArrayList<String> getDeals() {
         return deals;
@@ -18,9 +18,9 @@ public abstract class Main {
 
         String[] parts;
         String inputS;
-        boolean hasIndex = false; // ��� �����
-        boolean hasText; // ��� ������
-        boolean hasText1 = false; // ��� ������ �� 2-� �����
+        boolean hasIndex = false; // ??? ?????
+        boolean hasText; // ??? ??????
+        boolean hasText1 = false; // ??? ?????? ?? 2-? ?????
 
         SimpleBot simpleBot = new SimpleBot();
 
@@ -100,12 +100,12 @@ public abstract class Main {
             } catch (Exception e) {
                 System.out.println("MY Exception " + e);
             } finally {
-                System.out.println(simpleBot.sayInReturn(inputS, true)); // ���������
+                System.out.println(simpleBot.sayInReturn(inputS, true)); // ?????????
             }
 
         } // end while
         HelloTensorFlow htf = new HelloTensorFlow();
-        htf.main(""); // ���������
+        htf.main(""); // ?????????
         // htf.wait(1);
         // TODO: adding working with TF and GPT2
 
