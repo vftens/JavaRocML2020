@@ -38,24 +38,40 @@ public  class Main {
             try {
                 parts = inputS.split("\\s");
                 try {
-                    n = Integer.parseInt(parts[1]);
+
                     if (parts[1].matches("\\d+")) {
                         hasIndex = true;
+                        n = Integer.parseInt(parts[1]);
+                    }
+                    else {
+                        hasIndex = false;
                     }
                 } catch (Exception e) {
                     hasIndex = false;
 
                     try {
-                        s = parts[1];
-                        hasText1 = true;
+                        //s = parts[1];
+                        if (parts[1].matches("\\w+")) {
+                            hasText1 = true;
+                            s = parts[1];
+                        }
+                        else {
+                            hasText1 = false;
+                        }
                     } catch (Exception e1) {
                         hasText1 = false;
                     }
                 }
                 try {
                     //String
-                    s = parts[2];
-                    hasText = true;
+                    //s = parts[2];
+                    if (parts[2].matches("\\w+")) {
+                        hasText = true;
+                        s = parts[2];
+                    }
+                    else {
+                        hasText = false;
+                    }
                 } catch (Exception e) {
                     hasText = false;
                 }
