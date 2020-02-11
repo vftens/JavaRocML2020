@@ -25,7 +25,7 @@ public class Main {
         return deals;
     }
 
-    public static boolean HasIndex() throws Exception  {
+    public static boolean HasIndex() throws Exception {
         if (parts[1] != null) {
             if (parts[1].matches("\\d+")) {
                 hasIndex = true;
@@ -35,9 +35,8 @@ public class Main {
                 hasIndex = false;
                 return false;
             }
-        }
-        else {
-            return  false;
+        } else {
+            return false;
         }
     }
 
@@ -51,8 +50,7 @@ public class Main {
                 hasText1 = false;
                 return false;
             }
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -68,7 +66,7 @@ public class Main {
                 hasText = false;
                 return false;
             }
-        }else {
+        } else {
             return false;
         }
     }
@@ -117,7 +115,7 @@ public class Main {
                             System.out.println("Inside HasText2 Then");
                         }
                     }
-                }catch(Exception e){
+                } catch (Exception e) {
                     // Nothing to say
                 }
                 // Commands
