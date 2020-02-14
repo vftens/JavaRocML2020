@@ -1,7 +1,6 @@
 package com.fesva;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class Main {
         return deals;
     }
 
-    public static boolean HasIndex() throws Exception {
+    public static boolean myHasIndex(String[] parts) throws Exception {
         if (parts[1] != null) {
             if (parts[1].matches("\\d+")) {
                 hasIndex = true;
@@ -40,7 +39,7 @@ public class Main {
         }
     }
 
-    public static boolean HasText() throws Exception {
+    public static boolean myHasText(String[] parts) throws Exception {
         if (parts[1] != null) {
             if (parts[1].matches("\\w+")) {
                 hasText1 = true;
@@ -55,7 +54,7 @@ public class Main {
         }
     }
 
-    public static boolean HasText2() throws Exception {
+    public static boolean myHasText2(String[] parts) throws Exception {
         //s = parts[2];
         if (parts[2] != null) {
             if (parts[2].matches("\\w+")) {
@@ -71,7 +70,7 @@ public class Main {
         }
     }
 
-    public static void TryTensorflow() throws Exception {
+    public static void tryTensorflow() throws Exception {
         System.out.println("Switch on Tensorflow?[Y/N]");
         inputS = reader.readLine().trim();
         if (inputS.equals("Y") || inputS.equals("y")) {
@@ -98,11 +97,11 @@ public class Main {
                     if (debug) {
                         System.out.println("Before HasIndex");
                     }
-                    if (!HasIndex()) {
+                    if (!myHasIndex(parts)) {
                         if (debug) {
                             System.out.println("Inside HasIndex Then");
                         }
-                        if (!HasText()) {
+                        if (!myHasText(parts)) {
                             //s = parts[1];
                             if (debug) {
                                 System.out.println("Inside HasText Then");
@@ -110,7 +109,7 @@ public class Main {
                         }
                     }
                     //String
-                    if (!HasText2()) {
+                    if (!myHasText2(parts)) {
                         if (debug) {
                             System.out.println("Inside HasText2 Then");
                         }
@@ -167,7 +166,7 @@ public class Main {
                 System.out.println(simpleBot.sayInReturn(inputS, true)); //     //sayInReturn
             }
         } // end while
-        TryTensorflow();
+        tryTensorflow();
     }
 
     public SimpleBot getSimpleBot() {
