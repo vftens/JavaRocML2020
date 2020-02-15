@@ -63,14 +63,10 @@ public class Main2 {
     }
 
     public static boolean myHasText2(String[] parts) throws Exception {
-        //s = parts[2];
         if (parts[2] != null) {
             if (parts[2].matches("\\w+")) {
-                //hasText = true;
-                //s = parts[2];
                 return true;
             } else {
-                //hasText = false;
                 return false;
             }
         } else {
@@ -99,9 +95,7 @@ public class Main2 {
                     try {
                         command = parts[0];
                         index = getIndex(parts);
-                        //if (index == null) {
-                            text = getText(parts);
-                        //}
+                        text = getText(parts);
                         hasIndex = myHasIndex(parts);
                         if (!hasIndex) {
                             hasText = myHasText(parts);
