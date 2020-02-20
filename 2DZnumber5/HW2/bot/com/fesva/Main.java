@@ -71,9 +71,8 @@ public class Main {
 */
 
     public static void main(String[] args) throws Exception {
-        SimpleBot simpleBot = getSimpleBot();
+        SimpleBot simpleBot = getSimpleBot();  //simpleBot.
         while (true) {
-            //simpleBot.
             System.out.println("Please, Input Your Command:");
             //String
             String inputS = reader.readLine().trim();
@@ -100,7 +99,7 @@ public class Main {
                     if (debug) System.out.println("Exception, Nothing to say " + e);// Nothing to say
                 }
                 // Commands
-                if (command != null) {
+                //if (command != null) {
                     switch (command) {
                         case "LIST":
                             int i = 0;
@@ -122,14 +121,14 @@ public class Main {
                             break;
                         case "EDIT":
                             if (index != null && text != null) {
-                                //if (hasIndex && hasText) {
+                                //if (hasIndex && hasText)
                                 deals.set(index, text); //(n, s);
                             } else System.out.println("You must enter your specifications for EDIT ");
 
                             break;
                         case "DELETE":
-                            if (index != null && getDeals().size() <= 2) {
-                                getDeals().remove(index);
+                            if (index != null && deals.size() <= 2) {
+                                deals.remove((int)index);
                                 if (debug) {
                                     System.out.println("Delete " + index);
                                 }
@@ -139,7 +138,7 @@ public class Main {
                             System.out.println("Sorry, Unknown Command.");
                             break;
                     }
-                }
+                //}
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             } catch (IndexOutOfBoundsException e) {
