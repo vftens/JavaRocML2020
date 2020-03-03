@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="BlatNumbers">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/BlatNumbers.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
