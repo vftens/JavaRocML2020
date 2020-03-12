@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         ArrayList<String> mylist = new ArrayList<>();
-        List<String> list = new List<>(mylist);
+        MList list = new MList(mylist);
         // Генерация номеров первоначальная
         String chars[] = new String[]{"A", "B", "C", "D", "E", "F",
                 "G", "H", "I", "J", "K", "L", "M", "N",
@@ -37,7 +37,7 @@ public class Main {
                                             currChar, currChar1, j, j, j, currChar, k, l, m);
                                 }
 
-                                List.Add(number);
+                                MList.mioAdd(number);
                             }
                         }
                     }
@@ -45,7 +45,7 @@ public class Main {
             }
         }
 
-        List.Sort();
+        MList.mySort();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Какой номер вы ищете?");
@@ -55,7 +55,7 @@ public class Main {
                 if (command.equals("quit"))
                     break;
 
-                List.write(command);
+                MList.write(command);
                 System.out.println("Попробуйте ввести другое ");
             } catch (IOException e) {
                 e.printStackTrace();
