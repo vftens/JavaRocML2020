@@ -1,12 +1,9 @@
-import org.jetbrains.annotations.Contract;
-
 class BankAccount implements Account {
-    private volatile double balance; // volatile is neccesary
+    private volatile double balance = 0; // volatile is neccesary
 
-    @Contract(pure = true)
+    //@Contract(pure = true)
     public BankAccount() {
 
-        balance = 0;
     }
 
     public BankAccount(double i) {
@@ -15,12 +12,10 @@ class BankAccount implements Account {
     }
 
     public void setBalance(int balance) {
-
         this.balance = balance;
     }
 
     public double getBalance() {
-
         return balance;
     }
 
@@ -28,17 +23,16 @@ class BankAccount implements Account {
         balance = balance + amount;
     }
 
-    public void insert(int amount) {
-        balance = balance + amount;
-    }
-
     private void withdraw() {
         withdraw();
     }
 
-    public void withdraw(double amount) {
-
-        balance = balance - amount;
+    public boolean withdraw(double amount) {
+        if (balance - amount > 0) {
+            balance = balance - amount;
+            return true;
+        }
+        return false;
     }
 
 

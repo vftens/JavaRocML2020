@@ -10,8 +10,11 @@ public class CardAccount extends BankAccount {
         super.deposit(i);
     }
 
-    public void withdraw(double amount) {
-        super.withdraw(amount * (1 + getComission()));
+    public boolean withdraw(double amount) {
+        if (getBalance() - amount * (1 + getComission()) > 0) {
+            return super.withdraw(amount * (1 + getComission()));
+        }
+        return false;
     }
 
     public double getComission() {

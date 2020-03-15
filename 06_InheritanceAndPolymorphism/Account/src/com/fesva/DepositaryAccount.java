@@ -1,5 +1,7 @@
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Date;
+
+//import static asLocalDate;
 
 class DepositaryAccount extends BankAccount {
     // с которого нельзя снимать деньги в течение месяца после последнего внесения
@@ -8,49 +10,46 @@ class DepositaryAccount extends BankAccount {
     }
 
     private Date dateOp;
-    public boolean result;
 
     public DepositaryAccount(double i) {
         super(i);
-    }
-
-    public boolean getresult(){
-        return result;
     }
 
     public Date getDateOp() {
         return dateOp;
     }
 
-    public void deposit(double amount){
+    public void deposit(double amount) {
         super.deposit(amount);
         setDateOp();
     }
 
     public void setDateOp() {
-        //Date dateOp
-        //current(Date);
+        /*
+        Date dateOp
+        current(Date)
+        */
         Date today = new Date();
         this.dateOp = today; //dateOp;
     }
 
-    public void withdraw(double amount) {
+    public boolean withdraw(double amount) {
         Date today = new Date();
         if (getDateSub(today)) {//today - getDateOp()
             super.withdraw(amount);
-            result = true;
-        } else {
-            result = false;
+            return true;
         }
+        return false;
     }
 
-    public boolean getDateSub(Date today){ // прошел месяц
-        //Calendar calendar = new GregorianCalendar();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
-        calendar.add(Calendar.MONTH, -1);
-        
-        if (calendar.before(getDateOp())){ // больше месяца
+    public boolean getDateSub(Date today) {
+        // прошел месяц ?
+
+        LocalDate today1 = LocalDate.now();
+        LocalDate localDate = today1.minusMonths(1);
+        LocalDate localDateOp = DateUtils.asLocalDate(getDateOp());
+
+        if(localDateOp.isBefore(localDate)) {
             return true;
         }
         return false;
