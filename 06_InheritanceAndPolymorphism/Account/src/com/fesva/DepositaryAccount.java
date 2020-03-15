@@ -1,8 +1,6 @@
 import java.time.LocalDate;
 import java.util.Date;
 
-//import static asLocalDate;
-
 class DepositaryAccount extends BankAccount {
     // с которого нельзя снимать деньги в течение месяца после последнего внесения
     public DepositaryAccount() {
@@ -25,24 +23,20 @@ class DepositaryAccount extends BankAccount {
     }
 
     public void setDateOp() {
-        /*
-        Date dateOp
-        current(Date)
-        */
+
         Date today = new Date();
         this.dateOp = today; //dateOp;
     }
 
     public boolean withdraw(double amount) {
-        Date today = new Date();
-        if (getDateSub(today)) {//today - getDateOp()
+        if (getDateSub()) {//today - getDateOp()
             super.withdraw(amount);
             return true;
         }
         return false;
     }
 
-    public boolean getDateSub(Date today) {
+    public boolean getDateSub() {
         // прошел месяц ?
 
         LocalDate today1 = LocalDate.now();

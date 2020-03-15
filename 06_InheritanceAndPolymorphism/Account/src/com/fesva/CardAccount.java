@@ -21,10 +21,6 @@ public class CardAccount extends BankAccount {
         return comission;
     }
 
-    public void setComission(double comission) {
-        this.comission = comission;
-    }
-
     // при снятии денег с которого будет взиматься комиссия 1%.
     private volatile double comission;
 

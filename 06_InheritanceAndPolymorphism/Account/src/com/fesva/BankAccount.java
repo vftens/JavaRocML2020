@@ -1,7 +1,6 @@
-class BankAccount implements Account {
+class BankAccount  {
     private volatile double balance = 0; // volatile is neccesary
 
-    //@Contract(pure = true)
     public BankAccount() {
 
     }
@@ -34,6 +33,4 @@ class BankAccount implements Account {
         }
         return false;
     }
-
-
 }
