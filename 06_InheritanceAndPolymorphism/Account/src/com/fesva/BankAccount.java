@@ -10,10 +10,6 @@ class BankAccount  {
         deposit(i);
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
     public double getBalance() {
         return balance;
     }
