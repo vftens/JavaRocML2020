@@ -14,6 +14,10 @@ class DepositaryAccount extends BankAccount {
         super(i);
     }
 
+    public boolean getresult(){
+        return result;
+    }
+
     public Date getDateOp() {
         return dateOp;
     }
@@ -46,7 +50,7 @@ class DepositaryAccount extends BankAccount {
         calendar.setTime(today);
         calendar.add(Calendar.MONTH, -1);
         
-        if (calendar.before(today)){ // больше месяца
+        if (calendar.before(getDateOp())){ // больше месяца
             return true;
         }
         return false;
