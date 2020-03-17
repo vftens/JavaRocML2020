@@ -26,5 +26,12 @@ public class Main {
             System.out.println("Withdraw denied.");
         }
         System.out.println("Итоговый баланс: " + acc.getBalance());
+
+        CardAccount creditCard = new CardAccount(100);
+        DepositaryAccount deposit = new DepositaryAccount(100);
+
+        deposit.transferTo(creditCard,
+                50); // не должно пройти, т.к. не прошел месяц.
+        creditCard.transferTo(deposit, 50); // всё длжно ОК
     }
 }
