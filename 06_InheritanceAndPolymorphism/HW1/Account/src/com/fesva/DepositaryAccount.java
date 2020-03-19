@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-class DepositaryAccount extends BankAccount implements DepositaryAccountIntf {
+class DepositaryAccount extends BankAccount {
     // с которого нельзя снимать деньги в течение месяца после последнего внесения
     public DepositaryAccount() {
 

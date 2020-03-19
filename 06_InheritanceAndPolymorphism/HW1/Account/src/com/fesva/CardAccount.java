@@ -1,4 +1,7 @@
 public class CardAccount extends BankAccount {
+    // при снятии денег с которого будет взиматься комиссия 1%.
+    private static final double COMISSION = 0.01;
+
     public CardAccount() {
 
     }
@@ -15,9 +18,6 @@ public class CardAccount extends BankAccount {
         }
         return false;
     }
-
-    // при снятии денег с которого будет взиматься комиссия 1%.
-    private static final double COMISSION = 0.01;
 
     // который будет переводить деньги с счета на счет.
     public void transferTo(BankAccount bank, double amount) {
