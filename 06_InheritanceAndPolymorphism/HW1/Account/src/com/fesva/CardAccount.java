@@ -33,13 +33,13 @@ public class CardAccount extends BankAccount {
     }
 
     public void transferTo(DepositaryAccount bank, double amount) {
-        if(withdraw(amount)){
+        if(this.withdraw(amount)){
             bank.deposit(amount);
-            System.out.println("\nTransfer successful. Transfered: $" + amount);
+            System.out.println("\nTransfer C successful. Transfered: $" + amount);
         }
         else {
             //does not need to be else if, because if not <=, it MUST be >.
-            System.out.println("\nTransfer failed, not enough balance!");
+            System.out.println("\nTransfer C failed, not enough balance!");
         }
 
     }

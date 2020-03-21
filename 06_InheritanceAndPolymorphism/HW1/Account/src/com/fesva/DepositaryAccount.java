@@ -55,12 +55,12 @@ class DepositaryAccount extends BankAccount {
         if (isMonthPassed()) {//today - getDateOp()
             if (withdraw(amount)) {
                 bank.deposit(amount);
-                System.out.println("\nTransfer successful. Transfered: $" + amount);
+                System.out.println("\nTransfer D successful. Transfered: $" + amount);
             }
         }
         else {
             //does not need to be else if, because if not <=, it MUST be >.
-            System.out.println("\nTransfer failed, not enough balance!");
+            System.out.println("\nTransfer D failed, not enough balance!");
         }
     }
 
@@ -70,12 +70,12 @@ class DepositaryAccount extends BankAccount {
         if (isMonthPassed()) {//today - getDateOp()
             if (withdraw(amount)) {
                 bank.deposit(amount);
-                System.out.println("\nTransfer successful. Transfered: $" + amount);
+                System.out.println("\nTransfer D successful. Transfered: $" + amount);
             }
         }
         else {
             //does not need to be else if, because if not <=, it MUST be >.
-            System.out.println("\nTransfer failed, not enough balance!");
+            System.out.println("\nTransfer D failed, not enough balance or not Month passed!");
         }
     }
 }
