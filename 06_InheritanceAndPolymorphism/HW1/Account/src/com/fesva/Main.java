@@ -30,8 +30,11 @@ public class Main {
         CardAccount creditCard = new CardAccount(100);
         DepositaryAccount deposit = new DepositaryAccount(100);
 
-        deposit.transferTo(creditCard,
-                50); // не должно пройти, т.к. не прошел месяц.
+        deposit.transferTo(creditCard,50); // не должно пройти, т.к. не прошел месяц.
         creditCard.transferTo(deposit, 50); // всё длжно ОК
+
+        CardAccount card = new CardAccount(100);
+        card.transferTo(deposit, 1);
+        card.transferTo(card, 1);
     }
 }
