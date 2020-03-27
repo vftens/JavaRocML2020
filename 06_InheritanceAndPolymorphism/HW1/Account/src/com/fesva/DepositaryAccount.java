@@ -6,7 +6,7 @@ class DepositaryAccount extends BankAccount {
 
     }
 
-    private LocalDate dateOp;
+    LocalDate dateOp;
 
     public DepositaryAccount(double amount) {
         super(amount);
@@ -51,31 +51,18 @@ class DepositaryAccount extends BankAccount {
 
     // который будет переводить деньги с счета на счет.
     @Override
-    public void transferTo(DepositaryAccount bank, double amount) {
+    public boolean transferTo(CardAccount bank, double amount) {
         if (isMonthPassed()) {//today - getDateOp()
             if (withdraw(amount)) {
                 bank.deposit(amount);
                 System.out.println("\nTransfer D successful. Transfered: $" + amount);
+                return true;
             }
         }
         else {
             //does not need to be else if, because if not <=, it MUST be >.
             System.out.println("\nTransfer D failed, not enough balance!");
         }
-    }
-
-    // который будет переводить деньги с счета на счет.
-
-    public void transferTo(CardAccount bank, double amount) {
-        if (isMonthPassed()) {//today - getDateOp()
-            if (withdraw(amount)) {
-                bank.deposit(amount);
-                System.out.println("\nTransfer D successful. Transfered: $" + amount);
-            }
-        }
-        else {
-            //does not need to be else if, because if not <=, it MUST be >.
-            System.out.println("\nTransfer D failed, not enough balance or not Month passed!");
-        }
+        return  false;
     }
 }

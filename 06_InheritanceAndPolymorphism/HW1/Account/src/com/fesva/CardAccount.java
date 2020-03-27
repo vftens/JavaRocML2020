@@ -20,27 +20,16 @@ public class CardAccount extends BankAccount {
     }
 
     // который будет переводить деньги с счета на счет.
-    public void transferTo(BankAccount bank, double amount) {
+    public boolean transferTo(BankAccount bank, double amount) {
         if(withdraw(amount)){
             bank.deposit(amount);
             System.out.println("\nTransfer successful. Transfered: $" + amount);
+            return true;
         }
         else {
             //does not need to be else if, because if not <=, it MUST be >.
             System.out.println("\nTransfer failed, not enough balance!");
         }
-
-    }
-
-    public void transferTo(DepositaryAccount bank, double amount) {
-        if(this.withdraw(amount)){
-            bank.deposit(amount);
-            System.out.println("\nTransfer C successful. Transfered: $" + amount);
-        }
-        else {
-            //does not need to be else if, because if not <=, it MUST be >.
-            System.out.println("\nTransfer C failed, not enough balance!");
-        }
-
+        return false;
     }
 }
