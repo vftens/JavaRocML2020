@@ -66,5 +66,21 @@ public class Main {
         // можно снимать
         boolean isSuccess = d.withdraw(150);
         System.out.println("Transfer Successful after 5 Months - " + isSuccess);
+
+        DepositaryAccount deposit1 = new DepositaryAccount(120);
+        CardAccount card1 = new CardAccount(100);
+        BankAccount rs = new BankAccount(100);
+
+        rs.transferTo(deposit1, 1);
+        rs.transferTo(card1, 1);
+        rs.transferTo(rs, 1);
+
+        deposit.transferTo(rs, 1);
+        deposit.transferTo(card1, 1);
+        deposit.transferTo(deposit1, 1);
+
+        card.transferTo(card, 1);
+        card.transferTo(deposit, 1);
+        card.transferTo(rs, 1);
     }
 }

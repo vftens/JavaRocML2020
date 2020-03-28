@@ -51,7 +51,7 @@ class DepositaryAccount extends BankAccount {
 
     // который будет переводить деньги с счета на счет.
     @Override
-    public boolean transferTo(CardAccount bank, double amount) {
+    public boolean transferTo(BankAccount bank, double amount) {
         if (isMonthPassed()) {//today - getDateOp()
             if (withdraw(amount)) {
                 bank.deposit(amount);

@@ -1,4 +1,4 @@
-public abstract class BankAccount {
+public class BankAccount {
     private double balance = 0; //
 
     public BankAccount() {
@@ -26,7 +26,7 @@ public abstract class BankAccount {
     }
 
     // который будет переводить деньги с счета на счет.
-    public boolean transferTo(CardAccount bank, double amount) {
+    public boolean transferTo(BankAccount bank, double amount) {
         if(this.withdraw(amount)){
             bank.deposit(amount);
             System.out.println("\nTransfer C successful. Transfered: $" + amount);
