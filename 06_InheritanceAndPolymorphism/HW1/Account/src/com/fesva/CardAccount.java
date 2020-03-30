@@ -3,7 +3,6 @@ public class CardAccount extends BankAccount {
     private static final double COMISSION = 0.01;
 
     public CardAccount() {
-
     }
 
     public CardAccount(double amount) {

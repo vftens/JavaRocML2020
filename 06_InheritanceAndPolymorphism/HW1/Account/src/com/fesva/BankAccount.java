@@ -2,7 +2,6 @@ public class BankAccount {
     private double balance = 0; //
 
     public BankAccount() {
-
     }
 
     public BankAccount(double amount) {
@@ -10,7 +9,6 @@ public class BankAccount {
     }
 
     public BankAccount(BankAccount bank, double amount) {
-        //super(bank);
         deposit(amount);
     }
 
