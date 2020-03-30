@@ -9,6 +9,11 @@ public class BankAccount {
         deposit(amount);
     }
 
+    public BankAccount(BankAccount bank, double amount) {
+        //super(bank);
+        deposit(amount);
+    }
+
     public double getBalance() {
         return balance;
     }

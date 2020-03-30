@@ -21,6 +21,8 @@ public class CardAccount extends BankAccount {
 
     // который будет переводить деньги с счета на счет.
     public boolean transferTo(BankAccount bank, double amount) {
+        super( bank, amount);
+        /*
         if(withdraw(amount)){
             bank.deposit(amount);
             System.out.println("\nTransfer successful. Transfered: $" + amount);
@@ -31,5 +33,7 @@ public class CardAccount extends BankAccount {
             System.out.println("\nTransfer failed, not enough balance!");
         }
         return false;
+
+         */
     }
 }
