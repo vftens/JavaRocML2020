@@ -18,22 +18,4 @@ public class CardAccount extends BankAccount {
         }
         return false;
     }
-
-    // который будет переводить деньги с счета на счет.
-    public boolean transferTo(BankAccount bank, double amount) {
-        super( bank, amount);
-        /*
-        if(withdraw(amount)){
-            bank.deposit(amount);
-            System.out.println("\nTransfer successful. Transfered: $" + amount);
-            return true;
-        }
-        else {
-            //does not need to be else if, because if not <=, it MUST be >.
-            System.out.println("\nTransfer failed, not enough balance!");
-        }
-        return false;
-
-         */
-    }
 }
