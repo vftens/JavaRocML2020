@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 @RestController
-public class DeafaultController {
+public class DefaultController {
 
     @RequestMapping("/")
     public String index()
