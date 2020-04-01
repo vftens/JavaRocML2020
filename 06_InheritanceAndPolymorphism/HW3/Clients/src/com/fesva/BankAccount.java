@@ -10,7 +10,7 @@ public abstract class BankAccount {
     public BankAccount(double amount) {
         new BankAccount() {
             @Override
-            public void transferTo(DepositaryAccount bank, double amount) {
+            public void transferTo(BankAccount bank, double amount) {
 
             }
         };
@@ -43,5 +43,5 @@ public abstract class BankAccount {
     };
 
      // который будет переводить деньги с счета на счет.
-     public abstract void transferTo(DepositaryAccount bank, double amount);
+     public abstract void transferTo(BankAccount bank, double amount);
  }
