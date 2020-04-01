@@ -2,10 +2,13 @@ public class BankAccount {
     private double balance = 0; //
 
     public BankAccount() {
-
     }
 
     public BankAccount(double amount) {
+        deposit(amount);
+    }
+
+    public BankAccount(BankAccount bank, double amount) {
         deposit(amount);
     }
 
