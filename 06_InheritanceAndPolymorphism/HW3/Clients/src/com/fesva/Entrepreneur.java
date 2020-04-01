@@ -1,16 +1,16 @@
-package com.fesva.clients;
+package com.fesva;
 
 public class Entrepreneur extends Client {
 
     private static double FUND_TAXES = 0.01;
-    private static double FUND_TAXES_WITH_DISCOUNT = 0.05;
+    private static double FUND_TAXES_WITH_DISCOUNT = 0.005;
 
     public Entrepreneur(String name) {
         super(name);
     }
 
     @Override
-    public void withdrow(double amount) {
+    public void withdraw(double amount) {
 
         if (this.amount >= amount) {
             this.amount -= amount;

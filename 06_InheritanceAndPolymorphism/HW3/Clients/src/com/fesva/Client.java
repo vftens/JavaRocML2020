@@ -1,8 +1,8 @@
-package com.fesva.clients;
+package com.fesva;
 
 public abstract class Client {
 
-    private static int nextAccountNumber = 0;
+    private static int nextAccountNumber = 1;
 
     private int accNumber;
     private String name;
@@ -16,7 +16,7 @@ public abstract class Client {
         nextAccountNumber++;
     }
 
-    public abstract void withdrow(double amount);
+    public abstract void withdraw(double amount);
 
     public abstract void fund(double amount);
 

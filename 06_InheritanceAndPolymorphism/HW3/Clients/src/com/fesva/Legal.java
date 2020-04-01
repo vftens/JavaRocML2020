@@ -1,13 +1,18 @@
-package com.fesva.clients;
+package com.fesva;
 
-public class Individual extends Client {
+public class Legal extends Client {
 
-    public Individual(String name) {
+    private static double WITHDRAW_TAXES = 0.01;
+
+    public Legal(String name) {
         super(name);
     }
 
     @Override
-    public void withdrow(double amount) {
+    public void withdraw(double amount) {
+
+        amount += amount * WITHDRAW_TAXES;
+
         if (this.amount >= amount) {
             this.amount -= amount;
         }
