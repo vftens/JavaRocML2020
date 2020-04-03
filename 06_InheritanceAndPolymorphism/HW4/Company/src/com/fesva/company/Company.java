@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Company {
 
-    private final int COMPANY_GOAL;
+    private int COMPANY_GOAL;
 
     private List<Employee> employees = new LinkedList<>();
 
@@ -58,7 +58,9 @@ public class Company {
         return monthIncome >= COMPANY_GOAL;
     }
 
-    public Collection<Employee> getEmployees() { return employees; }
+    public Collection<Employee> getEmployees() {
+        return employees;
+    }
 
     public ArrayList<Employee> getTopSalaryStaff(int count) {
         return getStaffBySalary(rangedEmployees.iterator(), count);

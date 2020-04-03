@@ -1,13 +1,10 @@
 package com.fesva.company;
 
 public class TopManager extends Employee {
+    private static final int percent = 150;
 
     public TopManager(String ID, int salary, Company company) {
         super(ID, salary, company);
-    }
-
-    public TopManager(int i) {
-        super(i);
     }
 
     @Override
@@ -17,11 +14,11 @@ public class TopManager extends Employee {
 
     @Override
     public String printMonthSalary() {
-        return String.format("%-10s: %10d (salary: %d, bonus: %d)", getName(), getMonthSalary(), salary, bonusValue);
+        return String.format("%-10s: %10d руб. (salary: %d руб., bonus: %d руб. )", getName(), getMonthSalary(), salary, bonusValue);
     }
 
     @Override
     public void countBonus() {
-        bonusValue = company.isCompanyGoalAchieved() ? (int)Math.round(salary * 1.5) : 0;
+        bonusValue = company.isCompanyGoalAchieved() ? (int) Math.round(salary * percent / 100) : 0;
     }
 }

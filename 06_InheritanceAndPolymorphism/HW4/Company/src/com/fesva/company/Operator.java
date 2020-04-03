@@ -6,10 +6,6 @@ public class Operator extends Employee {
         super(ID, salary, company);
     }
 
-    public Operator(int i) {
-        super(i);
-    }
-
     @Override
     public int getMonthSalary() {
         return salary;
@@ -17,7 +13,7 @@ public class Operator extends Employee {
 
     @Override
     public String printMonthSalary() {
-        return String.format("%-10s: %10d", getName(), getMonthSalary());
+        return String.format("%-10s: %10d руб.", getName(), getMonthSalary());
     }
 
 }

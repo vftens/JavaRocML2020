@@ -9,10 +9,6 @@ public class Manager extends Employee {
         super(ID, salary, company);
     }
 
-    public Manager(int i) {
-        super(i);
-    }
-
     @Override
     public int getMonthSalary() {
         return salary + bonusValue;
@@ -20,7 +16,7 @@ public class Manager extends Employee {
 
     @Override
     public String printMonthSalary() {
-        return String.format("%-10s: %10d (salary: %d, bonus: %d)", getName(), getMonthSalary(), salary, bonusValue);
+        return String.format("%-10s: %10d руб. (salary: %d руб., bonus: %d руб. )", getName(), getMonthSalary(), salary, bonusValue);
     }
 
     @Override

@@ -14,15 +14,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        CompanyClass RogaiKopyta = new CompanyClass();
-        //RogaiKopyta.hireAll(10);
-        TopManager topManager = new TopManager(10);
-        Manager manager = new Manager(80);
-        Operator operator = new Operator(180);
 
-
-        Company company = new Company(10000000);
+        Company company = new Company(7000000);
 
         System.out.println("\n--- Check hire/fire one ---");
         Employee fake = new Operator("FAKE", 100000000, company);
@@ -31,29 +24,29 @@ public class Main {
         company.fire(fake);
         System.out.println("FIRE. Company contains fake: " + (company.getEmployees().contains(fake)));
 
-
         System.out.println("\n--- Hire 270 employees ---");
         for (int i = 0; i < 10; i++) {
-            company.hire(new TopManager("TM " + i, i * 1000, company));
+            company.hire(new TopManager("TM " + i, (i + 1) * 4000, company));
         }
 
         for (int i = 0; i < 80; i++) {
-            company.hire(new Manager("M " + i, i * 10, company));
+            company.hire(new Manager("M " + i, (i + 1) * 400, company));
         }
 
         Collection<Employee> operators = new ArrayList<>();
         for (int i = 0; i < 180; i++) {
-            operators.add(new Operator("O " + i, i * 100, company));
+            operators.add(new Operator("O " + i, (i + 1) * 400, company));
         }
         company.hireAll(operators);
 
         testWorking(company);
 
         /// FIRE!!!
-        System.out.println("\n--- Fire 10% (27) ---");
-        company.fireAll(company.getLowestSalaryStaff(27));
+        System.out.println("\n--- Fire 50% (135) ---");
+        company.fireAll(company.getLowestSalaryStaff(135));
         testWorking(company);
 
+        company.fireAll();
     }
 
     private static void testWorking(Company company) {
@@ -74,7 +67,7 @@ public class Main {
 
         int i = 1;
 
-        for (Employee e:
+        for (Employee e :
                 company.getTopSalaryStaff(top)) {
             System.out.println(i + ".\t\t" + e.printMonthSalary());
             i++;
@@ -85,7 +78,7 @@ public class Main {
         i = amount - low + 1;
         List<Employee> lowestSalaryStaff = company.getLowestSalaryStaff(low);
         Collections.reverse(lowestSalaryStaff);
-        for (Employee e:
+        for (Employee e :
                 lowestSalaryStaff) {
             System.out.println(i + ".\t\t" + e.printMonthSalary());
             i++;
