@@ -14,8 +14,8 @@ public class Company {
 
     private int monthIncome = 0;
 
-    public Company(int company_goal) {
-        COMPANY_GOAL = company_goal;
+    public Company(int companyGoal) {
+        COMPANY_GOAL = companyGoal;
     }
 
     public void hire(Employee employee) {

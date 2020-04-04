@@ -1,7 +1,7 @@
 package com.fesva.company;
 
 public class TopManager extends Employee {
-    private static final int percent = 150;
+    private static final int PERCENT = 150;
 
     public TopManager(String ID, int salary, Company company) {
         super(ID, salary, company);
@@ -19,6 +19,6 @@ public class TopManager extends Employee {
 
     @Override
     public void countBonus() {
-        bonusValue = company.isCompanyGoalAchieved() ? (int) Math.round(salary * percent / 100) : 0;
+        bonusValue = company.isCompanyGoalAchieved() ? (int) Math.round(salary * PERCENT / 100) : 0;
     }
 }
