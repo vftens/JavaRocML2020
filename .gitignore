@@ -15,6 +15,7 @@
 out/
 target/
 
+*.zip
 tensorflow*
 libtensorflow*
 
