@@ -44,7 +44,7 @@ public class Company {
         employees.forEach(e -> gainedMoney.addAndGet(e.gainMoney()));
         monthIncome = gainedMoney.get();
 
-        employees.forEach(Employee::countBonus);
+        employees.forEach(employee -> employee.countBonus());
 
         rangedEmployees.clear();
         rangedEmployees.addAll(employees);

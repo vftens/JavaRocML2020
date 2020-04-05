@@ -1,5 +1,7 @@
 package com.fesva.company;
 
+import com.sun.jdi.Value;
+
 public class TopManager extends Employee {
     private static final int PERCENT = 150;
 
@@ -9,7 +11,7 @@ public class TopManager extends Employee {
 
     @Override
     public int getMonthSalary() {
-        return salary + bonusValue;
+        return salary + getBonus();
     }
 
     @Override
@@ -19,6 +21,10 @@ public class TopManager extends Employee {
 
     @Override
     public void countBonus() {
-        bonusValue = company.isCompanyGoalAchieved() ? (int) Math.round(salary * PERCENT / 100) : 0;
+        bonusValue = getBonus();
+    }
+
+    private int getBonus(){
+        return  company.isCompanyGoalAchieved() ? (int) Math.round(salary * PERCENT / 100) : 0;
     }
 }

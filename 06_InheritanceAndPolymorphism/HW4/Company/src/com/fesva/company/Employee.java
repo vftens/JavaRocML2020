@@ -26,6 +26,9 @@ public abstract class Employee {
 
     public void countBonus() {
     }
+    private int getBonus(){
+        return bonusValue;
+    }
 
     public String getName() {
         return this.ID;
