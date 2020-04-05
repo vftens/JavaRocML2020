@@ -20,24 +20,8 @@ public class Employee
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getSalary() {
         return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public Date getWorkStart() {
-        return workStart;
-    }
-
-    public void setWorkStart(Date workStart) {
-        this.workStart = workStart;
     }
 
     public String toString()

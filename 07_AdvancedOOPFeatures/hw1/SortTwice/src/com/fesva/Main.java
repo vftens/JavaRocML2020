@@ -14,14 +14,7 @@ public class Main
     {
         ArrayList<com.fesva.Employee> staff = loadStaffFromFile();
 
-        // top payment first
-
-        // by standard comparator
-//        staff.sort(Comparator
-//                .comparingInt(Employee::getSalary)
-//                .reversed()
-//                .thenComparing(Employee::getName)
-//        );
+        // top payment first - Сначала большие платежи
 
         // by lambda
         staff.sort((e1,e2) -> {
@@ -33,6 +26,21 @@ public class Main
             }
         });
 
+        for (com.fesva.Employee e :
+                staff) {
+            System.out.println(e);
+        }
+
+
+ //by standard comparator
+        staff.sort(Comparator
+                .comparingInt(Employee::getSalary)
+                .reversed()
+                .thenComparing(Employee::getName)
+        );
+
+        System.out.println("");
+        System.out.println("Sorted by standard comparator");
         for (com.fesva.Employee e :
                 staff) {
             System.out.println(e);
