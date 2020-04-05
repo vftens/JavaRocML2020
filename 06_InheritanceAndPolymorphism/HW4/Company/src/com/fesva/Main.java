@@ -69,7 +69,7 @@ public class Main {
 
         for (Employee e :
                 company.getTopSalaryStaff(top)) {
-            System.out.println(i + ".\t\t" + e.printMonthSalary());
+            System.out.println(i + ".\t\t" + e.getMonthSalaryFormatted());
             i++;
         }
 
@@ -80,7 +80,7 @@ public class Main {
         Collections.reverse(lowestSalaryStaff);
         for (Employee e :
                 lowestSalaryStaff) {
-            System.out.println(i + ".\t\t" + e.printMonthSalary());
+            System.out.println(i + ".\t\t" + e.getMonthSalaryFormatted());
             i++;
         }
     }

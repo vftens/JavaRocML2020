@@ -18,7 +18,7 @@ public abstract class Employee {
 
     public abstract int getMonthSalary();
 
-    public abstract String printMonthSalary();
+    public abstract String getMonthSalaryFormatted();
 
     public int gainMoney() {
         return 0;

@@ -12,7 +12,7 @@ public class Operator extends Employee {
     }
 
     @Override
-    public String printMonthSalary() {
+    public String getMonthSalaryFormatted() {
         return String.format("%-10s: %10d руб.", getName(), getMonthSalary());
     }
 

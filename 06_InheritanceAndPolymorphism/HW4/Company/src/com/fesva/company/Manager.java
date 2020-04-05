@@ -15,7 +15,7 @@ public class Manager extends Employee {
     }
 
     @Override
-    public String printMonthSalary() {
+    public String getMonthSalaryFormatted() {
         return String.format("%-10s: %10d руб. (salary: %d руб., bonus: %d руб. )", getName(), getMonthSalary(), salary, bonusValue);
     }
 
