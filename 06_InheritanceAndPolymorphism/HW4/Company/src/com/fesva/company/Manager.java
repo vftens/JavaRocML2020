@@ -1,7 +1,5 @@
 package com.fesva.company;
 
-import com.sun.jdi.Value;
-
 public class Manager extends Employee {
 
     private final static double BONUS_PERCENT = 0.05;
@@ -18,18 +16,13 @@ public class Manager extends Employee {
 
     @Override
     public String getMonthSalaryFormatted() {
-        return String.format("%-10s: %10d руб. (salary: %d руб., bonus: %d руб. )", getName(), getMonthSalary(), salary, bonusValue);
+        return String.format("%-10s: %10d руб. (salary: %d руб., bonus: %d руб. )", getName(), getMonthSalary(), salary, getBonus());
     }
 
     @Override
     public int gainMoney() {
         monthProceeds = (int)Math.round(Math.random() * 400000);
         return monthProceeds;
-    }
-
-    @Override
-    public void countBonus() {
-        bonusValue = getBonus();
     }
 
     private int getBonus() {

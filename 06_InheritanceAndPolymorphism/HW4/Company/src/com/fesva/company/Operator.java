@@ -15,5 +15,4 @@ public class Operator extends Employee {
     public String getMonthSalaryFormatted() {
         return String.format("%-10s: %10d руб.", getName(), getMonthSalary());
     }
-
 }

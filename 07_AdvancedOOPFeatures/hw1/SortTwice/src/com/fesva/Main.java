@@ -31,7 +31,6 @@ public class Main
             System.out.println(e);
         }
 
-
  //by standard comparator
         staff.sort(Comparator
                 .comparingInt(Employee::getSalary)

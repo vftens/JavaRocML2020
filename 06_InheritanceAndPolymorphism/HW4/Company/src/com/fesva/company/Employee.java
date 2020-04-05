@@ -5,7 +5,6 @@ public abstract class Employee {
     private final String ID;
     private final String name;
     protected int salary;
-    protected int bonusValue = 0;
 
     protected Company company;
 
@@ -25,9 +24,6 @@ public abstract class Employee {
     }
 
     public void countBonus() {
-    }
-    private int getBonus(){
-        return bonusValue;
     }
 
     public String getName() {
