@@ -7,12 +7,12 @@ import java.util.*;
 
 public class Main
 {
-    private static String staffFile = "src/skillbox/amkiri/module7/hw1/data/staff.txt";
+    private static String staffFile = "src/fesva/data/staff.txt";
     private static String dateFormat = "dd.MM.yyyy";
 
     public static void main(String[] args)
     {
-        ArrayList<Employee> staff = loadStaffFromFile();
+        ArrayList<com.fesva.Employee> staff = loadStaffFromFile();
 
         // top payment first
 
@@ -33,15 +33,15 @@ public class Main
             }
         });
 
-        for (Employee e :
+        for (com.fesva.Employee e :
                 staff) {
             System.out.println(e);
         }
     }
 
-    private static ArrayList<Employee> loadStaffFromFile()
+    private static ArrayList<com.fesva.Employee> loadStaffFromFile()
     {
-        ArrayList<Employee> staff = new ArrayList<>();
+        ArrayList<com.fesva.Employee> staff = new ArrayList<>();
         try
         {
             List<String> lines = Files.readAllLines(Paths.get(staffFile));
@@ -52,7 +52,7 @@ public class Main
                     System.out.println("Wrong line: " + line);
                     continue;
                 }
-                staff.add(new Employee(
+                staff.add(new com.fesva.Employee(
                     fragments[0],
                     Integer.parseInt(fragments[1]),
                     (new SimpleDateFormat(dateFormat)).parse(fragments[2])
