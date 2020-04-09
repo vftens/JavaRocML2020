@@ -19,10 +19,6 @@ public class Employee
         return calendar.get(Calendar.YEAR);
     }
 
-    public static int getmyYear(Employee e) {
-        return getYear(e.workStart);
-    }
-
     private Date workStart;
 
     public Employee(String name, Integer salary, Date workStart)
