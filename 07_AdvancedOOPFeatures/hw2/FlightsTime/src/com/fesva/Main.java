@@ -8,6 +8,7 @@ import com.skillbox.airport.Terminal;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Main {
     public static int getmyDate() { //Flight flight) {
@@ -32,6 +33,7 @@ public class Main {
         //allFlights = getmyDate();
 
         System.out.println("Terminals = " + allTerminals.size());
+        allAircrafts.stream().flatMapToInt(x -> IntStream.range(0, 120)).forEach(System.out::println);
 
         /*
         allAircrafts.stream().filter(aircraft -> Aircraft.getTime());
