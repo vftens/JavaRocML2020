@@ -3,27 +3,46 @@ package com.fesva;
 import com.skillbox.airport.Aircraft;
 import com.skillbox.airport.Airport;
 import com.skillbox.airport.Flight;
+import com.skillbox.airport.Flight.Type;
+import com.skillbox.airport.Terminal;
 
 import java.util.Comparator;
 import java.util.List;
 
-//import com.skillbox.airport.*;
-
 public class Main {
+    public static int getmyDate(){ //Flight flight) {
+        //(s1, s2) -> Flight.Type.valueOf("Time").compareTo(s2).getField(Time);
+        return Type.DEPARTURE.ordinal();
+    }
 
-    public  void main(String[] args) {
+    public static int getTime() {
+        return getmyDate(); //Flight flight);
+    }
+    public  static void main(String[] args) {
 	// write your code here
         Airport airport = Airport.getInstance();
         List<Aircraft> allAircrafts;
         allAircrafts = airport.getAllAircrafts();
+        List<Terminal> allTerminals;
+        allTerminals = airport.getTerminals();
+
+        String allFlights;
+        //allFlights = getmyDate();
+
+
+        /*
+        allAircrafts.stream().filter(aircraft -> Aircraft.getTime());
+        //allAircrafts.stream().filter(Flight.Type.DEPARTURE.name());
         allAircrafts.sort(Comparator
                 .comparing(Aircraft::toString)
                 .reversed()
                 .thenComparing((Aircraft t) -> {
-                    return t.equals(Flight.getDate(t) );
+                    return t.equals(Flight.getmyDate(t) );
                 }) );
-        allAircrafts.stream().sorted(Comparator.comparing(Flight.Type))
-                .ForEach();
+
+         */
+        //allAircrafts.stream().sorted(Comparator.comparing(s -> s(Type.DEPARTURE.toString())))
+          //      .ForEach(System.out::println);
 
         for (int i = 1; i<10;i++) //allAircrafts.get():
         {
@@ -51,7 +70,9 @@ public class Main {
             }
 
                      */
-        System.out.printf("Number of Aircrafts = %d", allAircrafts.size());
+        System.out.printf("Number of Aircrafts = %d \n", allAircrafts.size());
+        System.out.println(//allAircrafts.
+                 getmyDate()  );
 
     }
 }
