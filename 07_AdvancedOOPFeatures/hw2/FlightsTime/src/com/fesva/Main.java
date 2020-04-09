@@ -10,17 +10,18 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Main {
-    public static int getmyDate(){ //Flight flight) {
+    public static int getmyDate() { //Flight flight) {
         //(s1, s2) -> Flight.Type.valueOf("Time").compareTo(s2).getField(Time);
         return Type.DEPARTURE.ordinal();
     }
 
     public static int getTime() {
         return getmyDate(); //
-         //Flight.class.getDeclaredMethods();
+        //Flight.class.getDeclaredMethods();
     }
-    public  static void main(String[] args) {
-	// write your code here
+
+    public static void main(String[] args) {
+        // write your code here
         Airport airport = Airport.getInstance();
         List<Aircraft> allAircrafts;
         allAircrafts = airport.getAllAircrafts();
@@ -30,6 +31,7 @@ public class Main {
         String allFlights;
         //allFlights = getmyDate();
 
+        System.out.println("Terminals = " + allTerminals.size());
 
         /*
         allAircrafts.stream().filter(aircraft -> Aircraft.getTime());
@@ -43,14 +45,14 @@ public class Main {
 
          */
         //allAircrafts.stream().sorted(Comparator.comparing(s -> s(Type.DEPARTURE.toString())))
-          //      .ForEach(System.out::println);
+        //      .ForEach(System.out::println);
 
-        for (int i = 1; i<10;i++) //allAircrafts.get():
+        for (int i = 1; i < allAircrafts.size(); i++) //allAircrafts.get():
         {
             try {
                 Aircraft consumer = allAircrafts.get(i);
                 System.out.println(consumer.getModel());
-                System.out.println(consumer.getClass());
+                //System.out.println(consumer.getClass());
             } catch (Exception e) {
                 System.out.println("Number of Aircrafts = " + i);
                 break;
@@ -74,7 +76,7 @@ public class Main {
                      */
         System.out.printf("Number of Aircrafts = %d \n", allAircrafts.size());
         System.out.println(Flight.class.getDeclaredMethods());
-                 //getmyDate() );
+        //getmyDate() );
 
     }
 }
