@@ -1,8 +1,79 @@
 package com.fesva;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class Main {
 
+    //public static void main(String[] args) {
+    private static String staffFile = "src/fesva/data/staff.txt";
+    private static String dateFormat = "dd.MM.yyyy";
+
     public static void main(String[] args) {
-	// write your code here
+        ArrayList<com.fesva.Employee> staff = loadStaffFromFile();
+
+        // top payment first - Сначала большие платежи
+
+        // by lambda
+        staff.sort((e1, e2) -> {
+            int diff = e2.getSalary() - e1.getSalary();
+            if (diff == 0) {
+                return e1.getName().compareTo(e2.getName());
+            } else {
+                return diff;
+            }
+        });
+
+        staff.stream().map(Employee::getmyYear)
+            .filter(s-> s.equals(2017))
+            .forEach(System.out::println);
+
+        //}
+
+        //by standard comparator
+        staff.sort(Comparator
+                .comparingInt(Employee::getSalary)
+                //.filter()
+                .reversed()
+                .thenComparing(Employee::getName)
+        );
+
+        System.out.println();
+        System.out.println("Sorted by standard comparator");
+        for (com.fesva.Employee e :
+                staff) {
+            System.out.println(e);
+        }
     }
+
+    private static ArrayList<Employee> loadStaffFromFile() {
+        ArrayList<com.fesva.Employee> staff = new ArrayList<>();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get(staffFile));
+            for (String line : lines) {
+                String[] fragments = line.split("\t");
+                if (fragments.length != 3) {
+                    System.out.println("Wrong line: " + line);
+                    continue;
+                }
+                staff.add(new com.fesva.Employee(
+                        fragments[0],
+                        Integer.parseInt(fragments[1]),
+                        (new SimpleDateFormat(dateFormat)).parse(fragments[2])
+                ));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return staff;
+    }
+
+    // write your code here
 }
+
