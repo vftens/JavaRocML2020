@@ -16,7 +16,8 @@ public class Main {
     }
 
     public static int getTime() {
-        return getmyDate(); //Flight flight);
+        return getmyDate(); //
+         //Flight.class.getDeclaredMethods();
     }
     public  static void main(String[] args) {
 	// write your code here
@@ -49,6 +50,7 @@ public class Main {
             try {
                 Aircraft consumer = allAircrafts.get(i);
                 System.out.println(consumer.getModel());
+                System.out.println(consumer.getClass());
             } catch (Exception e) {
                 System.out.println("Number of Aircrafts = " + i);
                 break;
@@ -71,8 +73,8 @@ public class Main {
 
                      */
         System.out.printf("Number of Aircrafts = %d \n", allAircrafts.size());
-        System.out.println(//allAircrafts.
-                 getmyDate()  );
+        System.out.println(Flight.class.getDeclaredMethods());
+                 //getmyDate() );
 
     }
 }
