@@ -6,16 +6,17 @@ import com.skillbox.airport.Flight;
 import com.skillbox.airport.Flight.Type;
 import com.skillbox.airport.Terminal;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
 import static com.fesva.DateUtils.asLocalDate;
 import static com.fesva.DateUtils.asLocalDateTime;
-//import static jdk.jfr.internal.Utils.isBefore;
 
 public class Main {
-    public static int getmyDate() { //Flight flight) {
+    private static final int HOURS = 2;
+    public static int getmyDate() {
         //(s1, s2) -> Flight.Type.valueOf("Time").compareTo(s2).getField(Time);
         return Type.DEPARTURE.ordinal();
     }
@@ -32,40 +33,57 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         Airport airport = Airport.getInstance();
-        List<Aircraft> allAircrafts;
-        allAircrafts = airport.getAllAircrafts();
+
         List<Terminal> allTerminals;
         allTerminals = airport.getTerminals();
 
-        List<Flight> allFlights = null;
+        List<Flight> allFlights;
 
-        System.out.println("allTerminals flatMap");
+        System.out.println("allTerminals future flatMap");
         //allTerminals.stream().flatMapToInt(terminal -> IntStream.range(0, 120)).forEach(System.out::println);
 
         //LocalTime currrentTime = new LocalTime();
         // terminal.stream().flatMap
         for (Terminal terminal : allTerminals) {
             allFlights = terminal.getFlights();
-            System.out.println(allFlights);
+            //System.out.println(allFlights);
 
             LocalTime now = LocalTime.now();
-            LocalTime _2HoursAfter = now.plusHours(2);
+            LocalDate today = LocalDate.now();
+            int day = today.getDayOfMonth();
+            LocalTime _2HoursAfter = now.plusHours(HOURS);
             boolean before = now.isBefore(_2HoursAfter); // true
             for (Flight flight : allFlights) {
                 Date mytim = flight.getDate();
-                boolean before1; // true
-                before1 = now.isBefore(LocalTime.from(asLocalDateTime(mytim)));
+                boolean before1 = now.isBefore(LocalTime.from(asLocalDateTime(mytim)));
 
-                boolean after = now.isAfter(LocalTime.from(asLocalDateTime(mytim))); // false
-                System.out.println(before1 && after);
-                System.out.println(flight.getDate());
+                boolean todayFlag;
+                if (day == asLocalDate(mytim).getDayOfMonth()) {
+                    todayFlag = true;
+                } else {
+                    todayFlag = false;
+                }
+                boolean after = _2HoursAfter.isAfter(LocalTime.from(asLocalDateTime(mytim))); // false
+
+                String typ = String.valueOf(flight.getType());
+                boolean DepartureFlag;
+                if (typ == "DEPARTURE") {
+                    DepartureFlag = true;
+                } else {
+                    DepartureFlag = false;
+                }
+                assert before;
+                if (before1 && after && todayFlag && DepartureFlag) {
+                    System.out.print(flight.getDate());
+                    System.out.println(" " + flight.getAircraft().getModel());
+                }
             }
             //allFlights.stream().filter("DEPARTURE").forEach(x -> System.out.println(x));
         }
 
         //allFlights = getmyDate();
 
-        System.out.println("Terminals = " + allTerminals.size());
+        //System.out.println("Terminals = " + allTerminals.size());
         //allAircrafts.stream().flatMapToInt(x -> IntStream.range(0, 120)).forEach(System.out::println);
 
         /*
@@ -82,6 +100,7 @@ public class Main {
         //allAircrafts.stream().sorted(Comparator.comparing(s -> s(Type.DEPARTURE.toString())))
         //      .ForEach(System.out::println);
 
+        /*
         for (int i = 1; i < allAircrafts.size(); i++) //allAircrafts.get():
         {
             try {
@@ -93,6 +112,8 @@ public class Main {
                 break;
             }
         }
+
+         */
         /*
         int i;
         for (i = 1; i<10_000;i++) //allAircrafts.get():
@@ -109,7 +130,7 @@ public class Main {
             }
 
                      */
-        System.out.printf("Number of Aircrafts = %d \n", allAircrafts.size());
+        //System.out.printf("Number of Aircrafts = %d \n", allAircrafts.size());
         //System.out.println(Flight.class.getDeclaredMethods());
         //getmyDate() );
 
