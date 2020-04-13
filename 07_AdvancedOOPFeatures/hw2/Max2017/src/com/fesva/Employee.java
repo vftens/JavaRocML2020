@@ -13,12 +13,6 @@ public class Employee
         return workStart;
     }
 
-    public static int getYear(Date s) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(s);
-        return calendar.get(Calendar.YEAR);
-    }
-
     private Date workStart;
 
     public Employee(String name, Integer salary, Date workStart)

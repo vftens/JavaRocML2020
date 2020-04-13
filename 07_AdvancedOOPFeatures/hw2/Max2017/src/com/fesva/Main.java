@@ -15,9 +15,15 @@ public class Main {
         ArrayList<com.fesva.Employee> staff = loadStaffFromFile();
 
         staff.stream()
-                .filter(employee -> Employee.getYear(employee.getWorkStart()) == 2017)
+                .filter(employee -> Main.getYear(employee.getWorkStart()) == 2017)
                 .max(Comparator.comparing(Employee::getSalary))
                 .ifPresent(System.out::println);
+    }
+
+    public static int getYear(Date s) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(s);
+        return calendar.get(Calendar.YEAR);
     }
 
     private static ArrayList<Employee> loadStaffFromFile() {
