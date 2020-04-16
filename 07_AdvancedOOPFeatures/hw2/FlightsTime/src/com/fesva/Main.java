@@ -1,6 +1,5 @@
 package com.fesva;
 
-import com.skillbox.airport.Aircraft;
 import com.skillbox.airport.Airport;
 import com.skillbox.airport.Flight;
 import com.skillbox.airport.Flight.Type;
@@ -10,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static com.fesva.DateUtils.asLocalDate;
 import static com.fesva.DateUtils.asLocalDateTime;
@@ -80,6 +80,11 @@ public class Main {
             }
             //allFlights.stream().filter("DEPARTURE").forEach(x -> System.out.println(x));
         }
+
+        Stream<Flight> arrivalList = allTerminals.stream()
+                .flatMap(terminal -> terminal.getFlights().stream());
+
+        arrivalList.forEach(flight -> flight.getDate());
 
         //allFlights = getmyDate();
 
