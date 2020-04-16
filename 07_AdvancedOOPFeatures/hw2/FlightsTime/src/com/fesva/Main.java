@@ -66,14 +66,14 @@ public class Main {
                 boolean after = _2HoursAfter.isAfter(LocalTime.from(asLocalDateTime(mytim))); // false
 
                 String typ = String.valueOf(flight.getType());
-                boolean DepartureFlag;
+                boolean departureFlag;
                 if (typ == "DEPARTURE") {
-                    DepartureFlag = true;
+                    departureFlag = true;
                 } else {
-                    DepartureFlag = false;
+                    departureFlag = false;
                 }
                 assert before;
-                if (before1 && after && todayFlag && DepartureFlag) {
+                if (before1 && after && todayFlag && departureFlag) {
                     System.out.print(flight.getDate());
                     System.out.println(" " + flight.getAircraft().getModel());
                 }
