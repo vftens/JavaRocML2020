@@ -12,8 +12,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         CustomerStorage executor = new CustomerStorage();
-        try {
-            for (; ; ) {
+
+        for (; ; ) {
+            try {
                 String command = scanner.nextLine();
                 String[] tokens = command.split("\\s+", 2);
                 if (tokens[0].equals("add")) {
@@ -29,11 +30,12 @@ public class Main {
                 } else {
                     System.out.println(commandError);
                 }
+            } catch (ArrayIndexOutOfBoundsException e1) {
+                System.out.println("EXCEPTION " + e1);
+            } catch (Exception e) {
+                System.out.println("Exception " + e);
             }
-        } catch (ArrayIndexOutOfBoundsException e1){
-            System.out.println("EXCEPTION " + e1);
-        } catch(Exception e){
-            System.out.println("Exception " + e);
         }
+
     }
 }
