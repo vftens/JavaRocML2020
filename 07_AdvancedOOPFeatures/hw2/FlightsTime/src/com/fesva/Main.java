@@ -65,7 +65,7 @@ public class Main {
             String typ = String.valueOf(flight.getType());
             boolean departureFlag = typ.equals(Type.DEPARTURE.toString());
 
-            if (before1 && after  && departureFlag) {
+            if (before1 && after && departureFlag) {
                 System.out.print(flight.getDate());
                 System.out.println(" " + flight.getAircraft().getModel());
             }
