@@ -5,13 +5,12 @@ import com.skillbox.airport.Flight;
 import com.skillbox.airport.Flight.Type;
 import com.skillbox.airport.Terminal;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.fesva.DateUtils.asLocalDate;
 import static com.fesva.DateUtils.asLocalDateTime;
 
 public class Main {
@@ -26,36 +25,24 @@ public class Main {
         List<Flight> allFlights;
 
         System.out.println("Classical Programming:");
+        LocalDateTime lnow = LocalDateTime.now();
 
         for (Terminal terminal : allTerminals) {
             allFlights = terminal.getFlights();
 
-            LocalTime now = LocalTime.now();
-            LocalDate today = LocalDate.now();
-            int day = today.getDayOfMonth();
-            LocalTime _2HoursAfter = now.plusHours(HOURS);
-            boolean before = now.isBefore(_2HoursAfter); // true
+            LocalDateTime _2HoursAfter = lnow.plusHours(HOURS);
+            boolean before = lnow.isBefore(_2HoursAfter); // true
             for (Flight flight : allFlights) {
                 Date mytim = flight.getDate();
-                boolean before1 = now.isBefore(LocalTime.from(asLocalDateTime(mytim)));
+                boolean before1 = lnow.isBefore(asLocalDateTime(mytim));
 
-                boolean todayFlag;
-                if (day == asLocalDate(mytim).getDayOfMonth()) {
-                    todayFlag = true;
-                } else {
-                    todayFlag = false;
-                }
-                boolean after = _2HoursAfter.isAfter(LocalTime.from(asLocalDateTime(mytim))); // false
+                boolean after = _2HoursAfter.isAfter(asLocalDateTime(mytim)); // false
 
                 String typ = String.valueOf(flight.getType());
-                boolean departureFlag;
-                if (typ.equals(Type.DEPARTURE.toString())) { // "DEPARTURE"
-                    departureFlag = true;
-                } else {
-                    departureFlag = false;
-                }
+                boolean departureFlag = typ.equals(Type.DEPARTURE.toString());
+
                 assert before;
-                if (before1 && after && todayFlag && departureFlag) {
+                if (before1 && after && departureFlag) {
                     System.out.print(flight.getDate());
                     System.out.println(" " + flight.getAircraft().getModel());
                 }
@@ -68,30 +55,17 @@ public class Main {
                 .flatMap(terminal -> terminal.getFlights().stream());
 
         arrivalList.forEach(flight -> {
-            LocalTime now = LocalTime.now();
-            LocalDate today = LocalDate.now();
-            int day = today.getDayOfMonth();
-            LocalTime _2HoursAfter = now.plusHours(HOURS);
+            LocalDateTime _2HoursAfter = lnow.plusHours(HOURS);
 
             Date mytim = flight.getDate();
-            boolean before1 = now.isBefore(LocalTime.from(asLocalDateTime(mytim)));
+            boolean before1 = lnow.isBefore(asLocalDateTime(mytim));
 
-            boolean todayFlag;
-            if (day == asLocalDate(mytim).getDayOfMonth()) {
-                todayFlag = true;
-            } else {
-                todayFlag = false;
-            }
-            boolean after = _2HoursAfter.isAfter(LocalTime.from(asLocalDateTime(mytim))); // false
+            boolean after = _2HoursAfter.isAfter(asLocalDateTime(mytim)); // false
 
             String typ = String.valueOf(flight.getType());
-            boolean departureFlag;
-            if (typ.equals(Type.DEPARTURE.toString())) {
-                departureFlag = true;
-            } else {
-                departureFlag = false;
-            }
-            if (before1 && after && todayFlag && departureFlag) {
+            boolean departureFlag = typ.equals(Type.DEPARTURE.toString());
+
+            if (before1 && after  && departureFlag) {
                 System.out.print(flight.getDate());
                 System.out.println(" " + flight.getAircraft().getModel());
             }
