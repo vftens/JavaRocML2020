@@ -32,6 +32,7 @@ public class Main {
                 }
             } catch (ArrayIndexOutOfBoundsException e1) {
                 System.out.println("EXCEPTION " + e1);
+                System.out.println(addCommand);
             } catch (Exception e) {
                 System.out.println("Exception " + e);
             }
