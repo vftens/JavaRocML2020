@@ -32,7 +32,7 @@ public class RouteCalculatorTest extends TestCase {
 
     }
 
-    public testRouteCalculator(StationIndex stationIndex)
+    public void testRouteCalculator(StationIndex stationIndex)
     {
 
     }
