@@ -37,13 +37,13 @@ public class Main
         }
     }
 
-    public static RouteCalculator getRouteCalculator()
+    private static RouteCalculator getRouteCalculator()
     {
         createStationIndex();
         return new RouteCalculator(stationIndex);
     }
 
-    static void printRoute(List<Station> route)
+    private static void printRoute(List<Station> route)
     {
         Station previousStation = null;
         for(Station station : route)
