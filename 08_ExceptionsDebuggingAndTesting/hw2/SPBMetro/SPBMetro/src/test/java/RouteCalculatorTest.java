@@ -17,8 +17,10 @@ public class RouteCalculatorTest extends TestCase {
     private Station lineTwo;
     private Station stationA;
     private Station stationB;
+    private Station stationC;
+    private Station Station3;
     private static StationIndex stationIndex; // = null;
-    private  RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
+    private RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
 
     @Override
     protected void setUp() throws Exception {
@@ -38,6 +40,7 @@ public class RouteCalculatorTest extends TestCase {
 
         from = new Station("Маяковская", line3);
         to = new Station("Гостиный двор", line3);
+        Station3 = new Station("Площадь Восстания", line1);
         stationA = from;
         stationB = to;
         //route = routeCalculator.getShortestRoute(from, to);
@@ -47,8 +50,7 @@ public class RouteCalculatorTest extends TestCase {
     }
 
     @Test
-    public void testgetShortestRoute()
-    {
+    public void testgetShortestRoute() {
         ArrayList<Station> actual = new ArrayList<>();
         actual.add(stationA);
         actual.add(stationB);
@@ -59,8 +61,7 @@ public class RouteCalculatorTest extends TestCase {
         assertEquals(expected, actual1);
     }
 
-    public void testgetRouteWithOneConnection()
-    {
+    public void testgetRouteWithOneConnection() {
 
     }
 
@@ -73,7 +74,7 @@ public class RouteCalculatorTest extends TestCase {
 
     }
 
-    public void testCalculateDuration(){
+    public void testCalculateDuration() {
         double actual = RouteCalculator.calculateDuration(route);
         double expected = 8.5;
         assertEquals(expected, actual);
@@ -91,15 +92,27 @@ public class RouteCalculatorTest extends TestCase {
     }
 
     public void test_distance_to_same_station() { //...
-         }
+
+    }
+
     public void test_stations_next_to_each_other_on_single_line() { //...
-         }
+    }
+
     public void test_opposite_stations_on_single_line() { //...
-         }
+    }
+
     public void test_opposite_stations_with_one_transfer() { //...
-         }
-    public void test_pposite_stations_with_two_transfers() { //...
-         }
+        ArrayList<Station> actual = new ArrayList<>();
+        actual.add(stationA);
+        actual.add(Station3);
+        RouteCalculator calculator = Main.getRouteCalculator();
+        List<Station> route = calculator.getShortestRoute(stationA, Station3);
+        double actual1 = RouteCalculator.calculateDuration(route);
+        assertEquals(3.5, actual1);
+    }
+
+    public void test_opposite_stations_with_two_transfers() { //...
+    }
 
     @Override
     protected void tearDown() throws Exception {
