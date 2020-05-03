@@ -8,6 +8,25 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Metro scheme that used in tests:
+ * <pre>{@code
+ *
+ *       (Line 1)
+ *      Station A - "Гостиный двор"
+ *          ↓
+ *     "Маяковская" Station B → "Площадь Восстания" Station E → Station G → Station H (Line 2)
+ *          ↓
+ *      Station C
+ *          ↓
+ *      Station D → Station J → Station K → Station Q (Line 3)
+ *                                 ↓
+ *                              Station L
+ *                              (Line 4)
+ *
+ * }</pre>
+ */
+
 public class RouteCalculatorTest extends TestCase {
     private List<Station> route;
     private Station from;
