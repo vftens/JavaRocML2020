@@ -3,9 +3,11 @@
 import core.Line;
 import core.Station;
 import junit.framework.TestCase;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,6 +29,14 @@ import java.util.List;
  * }</pre>
  */
 
+/**
+ * A - B ----- E      (line1: Z - A - E)
+ *     |              (line2: A - B - C - D)
+ *     B - C - D      (line3: C - F - G)
+ *         |
+ *         F - G
+ */
+
 public class RouteCalculatorTest extends TestCase {
     private List<Station> route;
     private Station from;
@@ -38,6 +48,7 @@ public class RouteCalculatorTest extends TestCase {
     private Station stationB;
     private Station stationC;
     private Station Station3;
+    Station A, B, C, D, E, K, F, G, Z;
     private static StationIndex stationIndex; // = null;
     private RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
 
@@ -63,8 +74,15 @@ public class RouteCalculatorTest extends TestCase {
         stationA = from;
         stationB = to;
         //route = routeCalculator.getShortestRoute(from, to);
+        /*
+        List<Station> myto = null;
+        myto.add(to);
+        myto.add(from);
+        stationIndex.addConnection((List<Station>) myto);
         stationIndex.addStation(from); //lineOne);
         stationIndex.addStation(to);
+        
+         */
         super.setUp();
     }
 
@@ -108,6 +126,13 @@ public class RouteCalculatorTest extends TestCase {
         List<Station> route = calculator.getShortestRoute(stationA, stationA);
         double actual1 = RouteCalculator.calculateDuration(route);
         assertEquals(0.0, actual1);
+    }
+
+    @Test
+    public void test_get_shortest_route_on_one_line() {
+        List<Station> expected = Arrays.asList(Z, A, E);
+        List<Station> actual = routeCalculator.getShortestRoute(Z, E);
+        assertEquals(expected, actual);
     }
 
     public void test_distance_to_same_station() { //...
