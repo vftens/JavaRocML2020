@@ -31,10 +31,10 @@ import java.util.List;
 
 /**
  * A - B ----- E      (line1: Z - A - E)
- *     |              (line2: A - B - C - D)
- *     B - C - D      (line3: C - F - G)
- *         |
- *         F - G
+ * |              (line2: A - B - C - D)
+ * B - C - D      (line3: C - F - G)
+ * |
+ * F - G
  */
 
 public class RouteCalculatorTest extends TestCase {
@@ -73,6 +73,7 @@ public class RouteCalculatorTest extends TestCase {
         Station3 = new Station("Площадь Восстания", line1);
         stationA = from;
         stationB = to;
+
         //route = routeCalculator.getShortestRoute(from, to);
         /*
         List<Station> myto = null;
@@ -84,6 +85,27 @@ public class RouteCalculatorTest extends TestCase {
         
          */
         super.setUp();
+    }
+
+    @Test
+    public void testblueLine(){
+        Line blueLine = new Line(1, "Blue");
+        Station A = new Station("A", blueLine);
+        Station B = new Station("B", blueLine);
+        Station C = new Station("C", blueLine);
+        Station D = new Station("D", blueLine);
+
+        blueLine.addStation(A);
+        blueLine.addStation(B);
+        blueLine.addStation(C);
+        blueLine.addStation(D);
+
+        stationIndex.addLine(blueLine);
+        stationIndex.addStation(A);
+        stationIndex.addStation(B);
+        stationIndex.addStation(C);
+        stationIndex.addStation(D);
+
     }
 
     @Test
