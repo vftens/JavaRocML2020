@@ -54,6 +54,8 @@ public class RouteCalculatorTest extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
+        InitLine il = new InitLine(); // Start
+
         route = new ArrayList<>();
         stationIndex = new StationIndex();
 

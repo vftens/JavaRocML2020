@@ -30,6 +30,7 @@ public class InitLine {
 
             // TODO нужно добавить станции A,B,C в stationIndex так чтобы тест заработал
 
+
             lineOne = new Line(1, "1");
 
             A = new Station("A", lineOne);
