@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -52,9 +53,12 @@ public class RouteCalculatorTest extends TestCase {
     private static StationIndex stationIndex; // = null;
     private RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
 
+
     @Override
     protected void setUp() throws Exception {
-        InitLine il = new InitLine(); // Start
+        InitLineTest il = new InitLineTest(); // Start BlueLine from Igor
+
+
 
         route = new ArrayList<>();
         stationIndex = new StationIndex();

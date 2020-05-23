@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class InitLine {
+public class InitLineTest {
     public class myRouteCalculatorTest {
         RouteCalculator routeCalculator;
         StationIndex stationIndex;
