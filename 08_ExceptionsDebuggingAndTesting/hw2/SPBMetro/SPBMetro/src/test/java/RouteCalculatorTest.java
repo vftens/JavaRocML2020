@@ -35,16 +35,15 @@ public class RouteCalculatorTest extends TestCase {
     private Station from;
     private Station to;
 
-    private Station lineOne;
-    private Station lineTwo;
+    //private Station lineOne;
+    //private Station lineTwo;
     private Station stationA;
     private Station stationB;
-    private Station stationC;
+    //private Station stationC;
     private Station Station3;
     Station A, B, C, D, E, K, F, G, Z;
     private static StationIndex stationIndex; // = null;
     private RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
-
 
     @Override
     protected void setUp() throws Exception {
@@ -127,7 +126,7 @@ public class RouteCalculatorTest extends TestCase {
         ArrayList<Station> actual = new ArrayList<>();
         actual.add(stationA);
         actual.add(stationB);
-        routeCalculator = Main.getRouteCalculator();
+        routeCalculator = new RouteCalculator(stationIndex);
         route = routeCalculator.getShortestRoute(stationA, stationB);
         double actual1 = routeCalculator.calculateDuration(route);
         double expected = 2.5;
@@ -142,9 +141,8 @@ public class RouteCalculatorTest extends TestCase {
     {
         StationIndex stationIndex1 = null;
         RouteCalculator ins = new RouteCalculator(stationIndex1);
-        routeCalculator = Main.getRouteCalculator();
+        routeCalculator = new RouteCalculator(stationIndex);
         System.out.println(ins);
-
     }
 
     public void testCalculateDuration() {
@@ -158,7 +156,7 @@ public class RouteCalculatorTest extends TestCase {
         ArrayList<Station> actual = new ArrayList<>();
         actual.add(stationA);
         actual.add(stationA);
-        RouteCalculator calculator = Main.getRouteCalculator();
+        RouteCalculator calculator = new RouteCalculator(stationIndex);
         List<Station> route = calculator.getShortestRoute(stationA, stationA);
         double actual1 = RouteCalculator.calculateDuration(route);
         assertEquals(0.0, actual1);
@@ -171,27 +169,33 @@ public class RouteCalculatorTest extends TestCase {
         assertEquals(expected, actual);
     }
 
+    /*
     public void test_distance_to_same_station() { //...
 
     }
 
     public void test_stations_next_to_each_other_on_single_line() { //...
+
     }
 
     public void test_opposite_stations_on_single_line() { //...
+
     }
+
+    public void test_opposite_stations_with_two_transfers() { //...
+
+    }
+
+     */
 
     public void test_opposite_stations_with_one_transfer() { //...
         ArrayList<Station> actual = new ArrayList<>();
         actual.add(stationA);
         actual.add(Station3);
-        RouteCalculator calculator = Main.getRouteCalculator();
+        RouteCalculator calculator = new RouteCalculator(stationIndex);
         List<Station> route = calculator.getShortestRoute(stationA, Station3);
         double actual1 = RouteCalculator.calculateDuration(route);
         assertEquals(3.5, actual1);
-    }
-
-    public void test_opposite_stations_with_two_transfers() { //...
     }
 
     @Override
