@@ -30,14 +30,6 @@ import java.util.List;
  * }</pre>
  */
 
-/**
- * A - B ----- E      (line1: Z - A - E)
- * |              (line2: A - B - C - D)
- * B - C - D      (line3: C - F - G)
- * |
- * F - G
- */
-
 public class RouteCalculatorTest extends TestCase {
     private List<Station> route;
     private Station from;
@@ -58,21 +50,18 @@ public class RouteCalculatorTest extends TestCase {
     protected void setUp() throws Exception {
         InitLineTest il = new InitLineTest(); // Start BlueLine from Igor
 
-
-
         route = new ArrayList<>();
         stationIndex = new StationIndex();
 
-        routeCalculator = Main.getRouteCalculator();
-        //routeCalculator = new RouteCalculator(stationIndex);
+        routeCalculator = new RouteCalculator(stationIndex);
 
         Line line1 = new Line(1, "Первая");
         Line line2 = new Line(2, "Вторая");
         Line line3 = new Line(3, "Третья");
-        route.add(new Station("Петровская", line1));
-        route.add(new Station("Арбузная", line1));
-        route.add(new Station("Морковная", line2));
-        route.add(new Station("Яблочная", line2));
+        route.add(new Station("K", line1));
+        route.add(new Station("F", line1));
+        route.add(new Station("G", line2));
+        route.add(new Station("D", line2));
 
         from = new Station("Маяковская", line3);
         to = new Station("Гостиный двор", line3);
@@ -94,6 +83,26 @@ public class RouteCalculatorTest extends TestCase {
     }
 
     @Test
+    public void testredLine(){
+        Line redLine = new Line(2, "Red");
+        Station A = new Station("A", redLine);
+        Station B = new Station("B", redLine);
+        Station C = new Station("C", redLine);
+        Station D = new Station("D", redLine);
+
+        redLine.addStation(A);
+        redLine.addStation(B);
+        redLine.addStation(C);
+        redLine.addStation(D);
+
+        stationIndex.addLine(redLine);
+        stationIndex.addStation(A);
+        stationIndex.addStation(B);
+        stationIndex.addStation(C);
+        stationIndex.addStation(D);
+    }
+
+    @Test
     public void testblueLine(){
         Line blueLine = new Line(1, "Blue");
         Station A = new Station("A", blueLine);
@@ -111,7 +120,6 @@ public class RouteCalculatorTest extends TestCase {
         stationIndex.addStation(B);
         stationIndex.addStation(C);
         stationIndex.addStation(D);
-
     }
 
     @Test
@@ -191,3 +199,12 @@ public class RouteCalculatorTest extends TestCase {
         super.tearDown();
     }
 }
+
+
+/** забытая схема - а нужна ли она?
+ * A - B ----- E      (line1: Z - A - E)
+ * |              (line2: A - B - C - D)
+ * B - C - D      (line3: C - F - G)
+ * |
+ * F - G
+ */
