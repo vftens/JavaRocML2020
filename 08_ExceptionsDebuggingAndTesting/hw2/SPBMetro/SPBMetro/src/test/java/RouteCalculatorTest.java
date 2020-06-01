@@ -65,6 +65,8 @@ public class RouteCalculatorTest extends TestCase {
         from = new Station("Маяковская", line3);
         to = new Station("Гостиный двор", line3);
         Station3 = new Station("Площадь Восстания", line1);
+        E = Station3;
+        Z = new Station("проспект Ветеранов");
         stationA = from;
         stationB = to;
 
@@ -165,6 +167,7 @@ public class RouteCalculatorTest extends TestCase {
     @Test
     public void test_get_shortest_route_on_one_line() {
         List<Station> expected = Arrays.asList(Z, A, E);
+        //z = ;
         List<Station> actual = routeCalculator.getShortestRoute(Z, E);
         assertEquals(expected, actual);
     }
