@@ -66,7 +66,7 @@ public class RouteCalculatorTest extends TestCase {
         to = new Station("Гостиный двор", line3);
         Station3 = new Station("Площадь Восстания", line1);
         E = Station3;
-        Z = new Station("проспект Ветеранов");
+        Z = new Station("Проспект Ветеранов", line1);
         stationA = from;
         stationB = to;
 
@@ -84,7 +84,7 @@ public class RouteCalculatorTest extends TestCase {
     }
 
     @Test
-    public void testredLine(){
+    public void testredLine() {
         Line redLine = new Line(2, "Red");
         Station A = new Station("A", redLine);
         Station B = new Station("B", redLine);
@@ -104,7 +104,7 @@ public class RouteCalculatorTest extends TestCase {
     }
 
     @Test
-    public void testblueLine(){
+    public void testblueLine() {
         Line blueLine = new Line(1, "Blue");
         Station A = new Station("A", blueLine);
         Station B = new Station("B", blueLine);
@@ -208,7 +208,8 @@ public class RouteCalculatorTest extends TestCase {
 }
 
 
-/** забытая схема - а нужна ли она?
+/**
+ * забытая схема - а нужна ли она?
  * A - B ----- E      (line1: Z - A - E)
  * |              (line2: A - B - C - D)
  * B - C - D      (line3: C - F - G)
