@@ -170,6 +170,7 @@ public class RouteCalculatorTest extends TestCase {
         stationIndex.addStation(D);
     }
 
+    /*
     @Test
     public void testgetShortestRoute() {
         ArrayList<Station> actual = new ArrayList<>();
@@ -181,6 +182,8 @@ public class RouteCalculatorTest extends TestCase {
         double expected = 2.5;
         assertEquals(expected, actual1);
     }
+
+     */
 
     public void testgetRouteWithOneConnection() {
 
@@ -303,6 +306,7 @@ public class RouteCalculatorTest extends TestCase {
 
      */
 
+    /*
     public void test_opposite_stations_with_one_transfer() { //...
         ArrayList<Station> actual = new ArrayList<>();
         actual.add(stationA);
@@ -312,6 +316,7 @@ public class RouteCalculatorTest extends TestCase {
         double actual1 = RouteCalculator.calculateDuration(route);
         assertEquals(3.5, actual1);
     }
+    */
 
     @Override
     protected void tearDown() throws Exception {
