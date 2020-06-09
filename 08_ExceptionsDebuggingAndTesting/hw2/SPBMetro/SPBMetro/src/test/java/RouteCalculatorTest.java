@@ -275,6 +275,7 @@ public class RouteCalculatorTest extends TestCase {
         assertEquals(0.0, actual1);
     }
 
+    /*
     @Test
     public void test_get_shortest_route_on_one_line() {
         List<Station> expected = Arrays.asList(Z, A, E);
@@ -283,7 +284,7 @@ public class RouteCalculatorTest extends TestCase {
         assertEquals(expected, actual);
     }
 
-    /*
+    //
     public void test_distance_to_same_station() { //...
 
     }
