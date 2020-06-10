@@ -29,7 +29,7 @@ public class Main {
 
     public static void main(String[] args) {
         logger = LogManager.getRootLogger();
-        logger.info("Запуск приложения" );
+        logger.info("Запуск приложения");
 
         RouteCalculator calculator = getRouteCalculator();
 
@@ -47,7 +47,7 @@ public class Main {
                 List<Station> route = calculator.getShortestRoute(from, to);
 
                 System.out.println("Маршрут:");
-                logger.info("Проложен маршрут:" );
+                logger.info("Проложен маршрут:");
                 printRoute(route);
 
                 System.out.println("Длительность: " +
