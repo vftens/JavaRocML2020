@@ -1,5 +1,3 @@
-//package src.main.java;
-
 import core.Line;
 import core.Station;
 import junit.framework.TestCase;
@@ -31,6 +29,8 @@ import java.util.List;
  */
 
 public class RouteCalculatorTest extends TestCase {
+    private static final double M25 = 2.5;
+    private static final double M35 = 3.5;
     Line[] line;
     Station[][] station;
 
@@ -52,7 +52,8 @@ public class RouteCalculatorTest extends TestCase {
     private static StationIndex stationIndex; // = null;
     private RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
 
-    @Override
+    //@Override
+    @Before
     protected void setUp() throws Exception {
         line = new Line[3];
         station = new Station[3][3]; // [N линии] [N станции на этой линии]
@@ -103,29 +104,10 @@ public class RouteCalculatorTest extends TestCase {
         stationA = from;
         stationB = to;
 
-        //StationIndex stationIndex = new StationIndex();
-        /*
-        for (Station station : Arrays.asList(A, B, C, X, Y, Z)) {
-            stationIndex.addStation(station);
-        }
-
-         */
-
         for (Line line : Arrays.asList(lineA, lineX)) {
             stationIndex.addLine(line);
         }
 
-
-        //route = routeCalculator.getShortestRoute(from, to);
-        /*
-        List<Station> myto = null;
-        myto.add(to);
-        myto.add(from);
-        stationIndex.addConnection((List<Station>) myto);
-        stationIndex.addStation(from); //lineOne);
-        stationIndex.addStation(to);
-        
-         */
         super.setUp();
     }
 
@@ -150,25 +132,6 @@ public class RouteCalculatorTest extends TestCase {
         stationIndex.addStation(D);
     }
 
-    @Test
-    public void testblueLine() {
-        Line blueLine = new Line(1, "Blue");
-        Station A = new Station("A", blueLine);
-        Station B = new Station("B", blueLine);
-        Station C = new Station("C", blueLine);
-        Station D = new Station("D", blueLine);
-
-        blueLine.addStation(A);
-        blueLine.addStation(B);
-        blueLine.addStation(C);
-        blueLine.addStation(D);
-
-        stationIndex.addLine(blueLine);
-        stationIndex.addStation(A);
-        stationIndex.addStation(B);
-        stationIndex.addStation(C);
-        stationIndex.addStation(D);
-    }
 
     /*
     @Test
@@ -183,12 +146,15 @@ public class RouteCalculatorTest extends TestCase {
         assertEquals(expected, actual1);
     }
 
-     */
+
 
     public void testgetRouteWithOneConnection() {
 
     }
 
+     */
+
+    @Test
     public void testRouteCalculator() //StationIndex stationIndex)
     {
         StationIndex stationIndex1 = null;
@@ -197,6 +163,7 @@ public class RouteCalculatorTest extends TestCase {
         System.out.println(ins);
     }
 
+    @Test
     // тест метода расчета времени поездки
     public void testCalculateDurationMy() {
 
@@ -215,6 +182,7 @@ public class RouteCalculatorTest extends TestCase {
         assertEquals(expected, actual);
     }
 
+    @Test
     // тест метода построения маршрута - по времени поездки - маршрут без переходов
     public void testTimeOfRouteOnTheLine() throws NullPointerException {
 
@@ -223,11 +191,12 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 3 on line 1"));
 
         double actual = RouteCalculator.calculateDuration(testRoute);
-        double expected = 2 * 2.5; // 2 прогона
+        double expected = 2 * M25; // 2 прогона
 
         assertEquals(expected, actual);
     }
 
+    @Test
     // тест метода построения маршрута - по времени поездки - маршрут  с 1 переходом
     public void testTimeOfRouteWithOneConnections() throws NullPointerException {
 
@@ -236,7 +205,7 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 2 on line 2"));
 
         double actual = RouteCalculator.calculateDuration(testRoute);
-        double expected = 2 * 2.5 + 3.5; // 2 прогона, 1 переход
+        double expected = 2 * M25 + M35; // 2 прогона, 1 переход
 
         assertEquals(expected, actual);
     } // why zero, not expected?
@@ -249,11 +218,12 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 2 on line 3"));
 
         double actual = RouteCalculator.calculateDuration(testRoute);
-        double expected = 3 * 2.5 + 2 * 3.5; // 3 прогона, 2 перехода
+        double expected = 3 * M25 + 2 * M35; // 3 прогона, 2 перехода
 
         assertEquals(expected, actual);
     } // why zero, not expected?
 
+    @Test
     public void testGetShortestRouteShouldNoNull() throws NullPointerException {
 
         assertNotNull(testCalculator.getShortestRoute(
@@ -261,6 +231,7 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 3 on line 3")));
     }
 
+    @Test
     public void testCalculateDuration() {
         double actual = RouteCalculator.calculateDuration(route);
         double expected = 8.5;

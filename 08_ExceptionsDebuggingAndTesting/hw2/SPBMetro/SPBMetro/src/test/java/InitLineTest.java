@@ -51,6 +51,26 @@ public class InitLineTest {
         }
 
         @Test
+        public void testblueLine() {
+            Line blueLine = new Line(1, "Blue");
+            Station A = new Station("A", blueLine);
+            Station B = new Station("B", blueLine);
+            Station C = new Station("C", blueLine);
+            Station D = new Station("D", blueLine);
+
+            blueLine.addStation(A);
+            blueLine.addStation(B);
+            blueLine.addStation(C);
+            blueLine.addStation(D);
+
+            stationIndex.addLine(blueLine);
+            stationIndex.addStation(A);
+            stationIndex.addStation(B);
+            stationIndex.addStation(C);
+            stationIndex.addStation(D);
+        }
+
+        @Test
         public void test_get_shortest_route_on_one_line() {
             List<Station> expected = Arrays.asList(A, B, C);
             List<Station> actual = routeCalculator.getShortestRoute(A, C);
