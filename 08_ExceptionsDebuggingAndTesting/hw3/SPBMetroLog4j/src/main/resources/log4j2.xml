@@ -28,7 +28,7 @@
             <MarkerFilter marker="INPUT_OK" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
 
-        <File name="InputError" fileName="logs/input_error.log"
+        <File name="InputError" fileName="logs/input_errors.log"
               append="true"
               immediateFlush="true"
               createOnDemand="false">
@@ -36,7 +36,7 @@
             <MarkerFilter marker="INPUT_ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
 
-        <File name="Exception" fileName="logs/exception.log"
+        <File name="Exception" fileName="logs/exceptions.log"
               append="true"
               immediateFlush="true"
               createOnDemand="false">
@@ -46,7 +46,7 @@
     </appenders>
 
     <loggers>
-        <root level="ALL">
+        <root level="info">
             <appender-ref ref="Console" level="ERROR"/>
             <appender-ref ref="AppLog" level="INFO"/>
             <appender-ref ref="InputOk" level="INFO"/>
