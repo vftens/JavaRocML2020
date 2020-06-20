@@ -29,14 +29,14 @@ import java.util.List;
  */
 
 public class RouteCalculatorTest extends TestCase {
-    private static final double M25 = 2.5;
-    private static final double M35 = 3.5;
+    private static final double INTER_STATION_TIME = 2.5;
+    private static final double BETWEEN_STATIONS_TIME = 3.5;
+    private  static final double DELTA = 0.0000001;
     Line[] line;
     Station[][] station;
 
     StationIndex testStationIndex;
     RouteCalculator testCalculator;
-    List<Station> testRoute;
 
     private List<Station> route;
     private Station from;
@@ -60,7 +60,6 @@ public class RouteCalculatorTest extends TestCase {
 
         testStationIndex = new StationIndex();
         testCalculator = new RouteCalculator(testStationIndex);
-        testRoute = new ArrayList<>();
 
         for (int l = 0; l < 3; l++) {
 
@@ -166,6 +165,8 @@ public class RouteCalculatorTest extends TestCase {
     @Test
     // тест метода расчета времени поездки
     public void testCalculateDurationMy() {
+        List<Station> testRoute;
+        testRoute = new ArrayList<>();
 
         // Самый длинный маршрут с 2 пересадками
         testRoute.add(testStationIndex.getStation("Station 1 on line 1"));
@@ -179,7 +180,7 @@ public class RouteCalculatorTest extends TestCase {
         double actual = RouteCalculator.calculateDuration(testRoute);
         double expected = 17.0;
 
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -191,9 +192,9 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 3 on line 1"));
 
         double actual = RouteCalculator.calculateDuration(testRoute);
-        double expected = 2 * M25; // 2 прогона
+        double expected = 2 * INTER_STATION_TIME; // 2 прогона
 
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -205,9 +206,9 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 2 on line 2"));
 
         double actual = RouteCalculator.calculateDuration(testRoute);
-        double expected = 2 * M25 + M35; // 2 прогона, 1 переход
+        double expected = 2 * INTER_STATION_TIME + BETWEEN_STATIONS_TIME; // 2 прогона, 1 переход
 
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     } // why zero, not expected?
 
     // тест метода построения маршрута - по времени поездки - маршрут  с 2 переходами
@@ -218,9 +219,9 @@ public class RouteCalculatorTest extends TestCase {
                 testStationIndex.getStation("Station 2 on line 3"));
 
         double actual = RouteCalculator.calculateDuration(testRoute);
-        double expected = 3 * M25 + 2 * M35; // 3 прогона, 2 перехода
+        double expected = 3 * INTER_STATION_TIME + 2 * BETWEEN_STATIONS_TIME; // 3 прогона, 2 перехода
 
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     } // why zero, not expected?
 
     @Test
@@ -235,7 +236,7 @@ public class RouteCalculatorTest extends TestCase {
     public void testCalculateDuration() {
         double actual = RouteCalculator.calculateDuration(route);
         double expected = 8.5;
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, DELTA);
     }
 
     @Test
@@ -246,7 +247,7 @@ public class RouteCalculatorTest extends TestCase {
         RouteCalculator calculator = new RouteCalculator(stationIndex);
         List<Station> route = calculator.getShortestRoute(stationA, stationA);
         double actual1 = RouteCalculator.calculateDuration(route);
-        assertEquals(0.0, actual1);
+        assertEquals(0.0, actual1, DELTA);
     }
 
     /*
