@@ -3,11 +3,17 @@ import core.Station;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Metro scheme that used in tests:
@@ -28,7 +34,7 @@ import java.util.List;
  * }</pre>
  */
 
-public class RouteCalculatorTest extends TestCase {
+public class RouteCalculatorTest{//} extends TestCase {
     private static final double INTER_STATION_TIME = 2.5;
     private static final double BETWEEN_STATIONS_TIME = 3.5;
     private  static final double DELTA = 0.0000001;
@@ -42,19 +48,17 @@ public class RouteCalculatorTest extends TestCase {
     private Station from;
     private Station to;
 
-    //private Station lineOne;
-    //private Station lineTwo;
     private Station stationA;
     private Station stationB;
-    //private Station stationC;
+
     private Station Station3;
     Station A, B, C, D, E, K, F, G, X, Y, Z;
     private static StationIndex stationIndex; // = null;
     private RouteCalculator routeCalculator; // = new RouteCalculator(stationIndex);;
 
-    //@Override
     @Before
-    protected void setUp() throws Exception {
+    @BeforeEach
+    public void setUp() throws Exception {
         line = new Line[3];
         station = new Station[3][3]; // [N линии] [N станции на этой линии]
 
@@ -107,7 +111,7 @@ public class RouteCalculatorTest extends TestCase {
             stationIndex.addLine(line);
         }
 
-        super.setUp();
+        //super.setUp();
     }
 
     @Test
@@ -290,9 +294,10 @@ public class RouteCalculatorTest extends TestCase {
     }
     */
 
-    @Override
+    //@Override
+    @AfterAll
     protected void tearDown() throws Exception {
-        super.tearDown();
+        //super.tearDown();
     }
 }
 
