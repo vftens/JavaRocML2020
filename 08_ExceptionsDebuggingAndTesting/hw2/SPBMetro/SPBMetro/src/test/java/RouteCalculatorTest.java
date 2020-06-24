@@ -54,7 +54,6 @@ public class RouteCalculatorTest{
     private RouteCalculator routeCalculator;
 
     @Before
-    @BeforeEach
     public void setUp() throws Exception {
         line = new Line[3];
         station = new Station[3][3]; // [N линии] [N станции на этой линии]
@@ -131,28 +130,6 @@ public class RouteCalculatorTest{
         stationIndex.addStation(C);
         stationIndex.addStation(D);
     }
-
-
-    /*
-    @Test
-    public void testgetShortestRoute() {
-        ArrayList<Station> actual = new ArrayList<>();
-        actual.add(stationA);
-        actual.add(stationB);
-        routeCalculator = new RouteCalculator(stationIndex);
-        route = routeCalculator.getShortestRoute(stationA, stationB);
-        double actual1 = routeCalculator.calculateDuration(route);
-        double expected = 2.5;
-        assertEquals(expected, actual1);
-    }
-
-
-
-    public void testgetRouteWithOneConnection() {
-
-    }
-
-     */
 
     @Test
     public void testRouteCalculator() //StationIndex stationIndex)
