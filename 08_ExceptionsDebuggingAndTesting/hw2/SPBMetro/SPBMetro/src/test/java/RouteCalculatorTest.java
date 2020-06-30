@@ -105,7 +105,6 @@ public class RouteCalculatorTest{
             stationIndex.addLine(line);
         }
 
-        //super.setUp();
     }
 
     @Test
