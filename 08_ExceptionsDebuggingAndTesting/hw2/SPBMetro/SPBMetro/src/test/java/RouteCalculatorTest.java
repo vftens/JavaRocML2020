@@ -47,7 +47,7 @@ public class RouteCalculatorTest{
     private Station stationB;
 
     private Station Station3;
-    Station A, B, C, D, E, K, F, G, X, Y, Z;
+    Station E, Z;
     private  StationIndex stationIndex;
     private RouteCalculator routeCalculator;
 

@@ -12,9 +12,9 @@ public class InitLineTest {
     RouteCalculator routeCalculator;
     StationIndex stationIndex;
     Line lineOne;
-    Line lineTwo;
-    Line lineThree;
-    Station A, B, C, X, Y, Z, S, T, O, P;
+    //Line lineTwo;
+    //Line lineThree;
+    Station A, B, C; //, X, Y, Z, S, T, O, P;
 
     /**
      * X
@@ -76,6 +76,4 @@ public class InitLineTest {
         List<Station> actual = routeCalculator.getShortestRoute(A, C);
         Assert.assertEquals(expected, actual);
     }
-
-
 }

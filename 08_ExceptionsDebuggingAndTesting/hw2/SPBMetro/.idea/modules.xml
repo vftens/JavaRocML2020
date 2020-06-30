@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SPBMetro.iml" filepath="$PROJECT_DIR$/SPBMetro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SPBMetro/spb-metro.iml" filepath="$PROJECT_DIR$/SPBMetro/spb-metro.iml" />
     </modules>
   </component>
 </project>
