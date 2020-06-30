@@ -2,8 +2,6 @@ import core.Line;
 import core.Station;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,8 +72,8 @@ public class RouteCalculatorTest{
             }
         }
         // добавление переходов в индекс
-        testStationIndex.addConnection(new ArrayList<>(Arrays.asList(station[0][1], station[1][0])));
-        testStationIndex.addConnection(new ArrayList<>(Arrays.asList(station[1][2], station[2][1])));
+        testStationIndex.addConnection(Arrays.asList(station[0][1], station[1][0]));
+        testStationIndex.addConnection(Arrays.asList(station[1][2], station[2][1]));
 
         InitLineTest il = new InitLineTest(); // Start BlueLine from Igor
 
@@ -227,60 +225,4 @@ public class RouteCalculatorTest{
         double actual1 = RouteCalculator.calculateDuration(route);
         assertEquals(0.0, actual1, DELTA);
     }
-
-    /*
-    @Test
-    public void test_get_shortest_route_on_one_line() {
-        List<Station> expected = Arrays.asList(Z, A, E);
-        //z = ;
-        List<Station> actual = routeCalculator.getShortestRoute(Z, E);
-        assertEquals(expected, actual);
-    }
-
-    //
-    public void test_distance_to_same_station() { //...
-
-    }
-
-    public void test_stations_next_to_each_other_on_single_line() { //...
-
-    }
-
-    public void test_opposite_stations_on_single_line() { //...
-
-    }
-
-    public void test_opposite_stations_with_two_transfers() { //...
-
-    }
-
-     */
-
-    /*
-    public void test_opposite_stations_with_one_transfer() { //...
-        ArrayList<Station> actual = new ArrayList<>();
-        actual.add(stationA);
-        actual.add(Station3);
-        RouteCalculator calculator = new RouteCalculator(stationIndex);
-        List<Station> route = calculator.getShortestRoute(stationA, Station3);
-        double actual1 = RouteCalculator.calculateDuration(route);
-        assertEquals(3.5, actual1);
-    }
-    */
-
-    //@Override
-    @AfterAll
-    protected void tearDown() throws Exception {
-        //super.tearDown();
-    }
 }
-
-
-/**
- * забытая схема - а нужна ли она?
- * A - B ----- E      (line1: Z - A - E)
- * |              (line2: A - B - C - D)
- * B - C - D      (line3: C - F - G)
- * |
- * F - G
- */
