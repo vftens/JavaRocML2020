@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
  *       (Line 1)
  *      Station A - "Гостиный двор"
  *          ↓
- *     "Маяковская" Station B → "Площадь Восстания" Station E → Station G → Station H (Line 2)
+ *     "Маяковская" Station B → "Площадь Восстания" Station E (Station 3) → Station G → Station H → "Проспект Ветеранов" Station Z (Line 2)
  *          ↓
  *      Station C
  *          ↓
@@ -30,10 +30,10 @@ import static org.junit.Assert.assertNotNull;
  * }</pre>
  */
 
-public class RouteCalculatorTest{
+public class RouteCalculatorTest {
     private static final double INTER_STATION_TIME = 2.5;
     private static final double BETWEEN_STATIONS_TIME = 3.5;
-    private  static final double DELTA = 0.0000001;
+    private static final double DELTA = 0.0000001;
     Line[] line;
 
     Station[][] station;
@@ -48,11 +48,11 @@ public class RouteCalculatorTest{
     private Station stationA;
     private Station stationB;
 
-    private Station Station3;
+    private Station Station3; // equal to Z
 
     Station A, B, C;
     Station E, Z;
-    private  StationIndex stationIndex;
+    private StationIndex stationIndex;
     private RouteCalculator routeCalculator;
 
     @Before
@@ -102,14 +102,14 @@ public class RouteCalculatorTest{
         Station3 = new Station("Площадь Восстания", line1);
         E = Station3;
         Z = new Station("Проспект Ветеранов", line1);
-        stationA = from;
-        stationB = to;
+        stationA = to;
+        stationB = from;
 
         for (Line line : Arrays.asList(lineA, lineX)) {
             stationIndex.addLine(line);
         }
 
-        //
+        // added from InitLine
         stationIndex = new StationIndex();
         routeCalculator = new RouteCalculator(stationIndex);
 
@@ -152,12 +152,12 @@ public class RouteCalculatorTest{
     }
 
     @Test
-    public void testRouteCalculator() //StationIndex stationIndex)
+    public void testRouteCalculator()
     {
         StationIndex stationIndex1 = null;
         RouteCalculator ins = new RouteCalculator(stationIndex1);
         routeCalculator = new RouteCalculator(stationIndex);
-        System.out.println(ins);
+        assertNotNull(routeCalculator);
     }
 
     @Test
@@ -184,47 +184,39 @@ public class RouteCalculatorTest{
     @Test
     // тест метода построения маршрута - по времени поездки - маршрут без переходов
     public void testTimeOfRouteOnTheLine() throws NullPointerException {
-
         List<Station> testRoute = testCalculator.getShortestRoute(
                 testStationIndex.getStation("Station 1 on line 1"),
                 testStationIndex.getStation("Station 3 on line 1"));
-
         double actual = RouteCalculator.calculateDuration(testRoute);
         double expected = 2 * INTER_STATION_TIME; // 2 прогона
-
         assertEquals(expected, actual, DELTA);
     }
 
     @Test
     // тест метода построения маршрута - по времени поездки - маршрут  с 1 переходом
     public void testTimeOfRouteWithOneConnections() throws NullPointerException {
-
         List<Station> testRoute = testCalculator.getShortestRoute(
                 testStationIndex.getStation("Station 1 on line 1"),
                 testStationIndex.getStation("Station 2 on line 2"));
-
         double actual = RouteCalculator.calculateDuration(testRoute);
         double expected = 2 * INTER_STATION_TIME + BETWEEN_STATIONS_TIME; // 2 прогона, 1 переход
 
         assertEquals(expected, actual, DELTA);
-    } // why zero, not expected?
+    }
 
     // тест метода построения маршрута - по времени поездки - маршрут  с 2 переходами
     public void testTimeOfRouteWithTwoConnections() throws NullPointerException {
-
         List<Station> testRoute = testCalculator.getShortestRoute(
                 testStationIndex.getStation("Station 1 on line 1"),
                 testStationIndex.getStation("Station 2 on line 3"));
-
         double actual = RouteCalculator.calculateDuration(testRoute);
         double expected = 3 * INTER_STATION_TIME + 2 * BETWEEN_STATIONS_TIME; // 3 прогона, 2 перехода
 
         assertEquals(expected, actual, DELTA);
-    } // why zero, not expected?
+    }
 
     @Test
     public void testGetShortestRouteShouldNoNull() throws NullPointerException {
-
         assertNotNull(testCalculator.getShortestRoute(
                 testStationIndex.getStation("Station 1 on line 1"),
                 testStationIndex.getStation("Station 3 on line 3")));
@@ -244,8 +236,8 @@ public class RouteCalculatorTest{
         actual.add(stationA);
         RouteCalculator calculator = new RouteCalculator(stationIndex);
         List<Station> route = calculator.getShortestRoute(stationA, stationA);
-        double actual1 = RouteCalculator.calculateDuration(route);
-        assertEquals(0.0, actual1, DELTA);
+        double actual_timing = RouteCalculator.calculateDuration(route);
+        assertEquals(0.0, actual_timing, DELTA);
     }
 
     @Test
@@ -274,5 +266,4 @@ public class RouteCalculatorTest{
         stationIndex.addStation(C);
         stationIndex.addStation(D);
     }
-
 }
