@@ -1,5 +1,6 @@
 import core.Line;
 import core.Station;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,6 +35,7 @@ public class RouteCalculatorTest{
     private static final double BETWEEN_STATIONS_TIME = 3.5;
     private  static final double DELTA = 0.0000001;
     Line[] line;
+
     Station[][] station;
 
     StationIndex testStationIndex;
@@ -47,6 +49,8 @@ public class RouteCalculatorTest{
     private Station stationB;
 
     private Station Station3;
+
+    Station A, B, C;
     Station E, Z;
     private  StationIndex stationIndex;
     private RouteCalculator routeCalculator;
@@ -55,6 +59,8 @@ public class RouteCalculatorTest{
     public void setUp() throws Exception {
         line = new Line[3];
         station = new Station[3][3]; // [N линии] [N станции на этой линии]
+
+        Line lineOne;
 
         testStationIndex = new StationIndex();
         testCalculator = new RouteCalculator(testStationIndex);
@@ -74,8 +80,6 @@ public class RouteCalculatorTest{
         // добавление переходов в индекс
         testStationIndex.addConnection(Arrays.asList(station[0][1], station[1][0]));
         testStationIndex.addConnection(Arrays.asList(station[1][2], station[2][1]));
-
-        InitLineTest il = new InitLineTest(); // Start BlueLine from Igor
 
         Line lineA = new Line(1, "lineA");
         Line lineX = new Line(2, "lineX");
@@ -105,6 +109,25 @@ public class RouteCalculatorTest{
             stationIndex.addLine(line);
         }
 
+        //
+        stationIndex = new StationIndex();
+        routeCalculator = new RouteCalculator(stationIndex);
+
+        lineOne = new Line(1, "1");
+
+        A = new Station("A", lineOne);
+        B = new Station("B", lineOne);
+        C = new Station("C", lineOne);
+
+        lineOne.addStation(A);
+        lineOne.addStation(B);
+        lineOne.addStation(C);
+
+        stationIndex.addStation(A);
+        stationIndex.addStation(B);
+        stationIndex.addStation(C);
+
+        stationIndex.addLine(lineOne);
     }
 
     @Test
@@ -224,4 +247,32 @@ public class RouteCalculatorTest{
         double actual1 = RouteCalculator.calculateDuration(route);
         assertEquals(0.0, actual1, DELTA);
     }
+
+    @Test
+    public void test_get_shortest_route_on_one_line() {
+        List<Station> expected = Arrays.asList(A, B, C);
+        List<Station> actual = routeCalculator.getShortestRoute(A, C);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testblueLine() {
+        Line blueLine = new Line(1, "Blue");
+        Station A = new Station("A", blueLine);
+        Station B = new Station("B", blueLine);
+        Station C = new Station("C", blueLine);
+        Station D = new Station("D", blueLine);
+
+        blueLine.addStation(A);
+        blueLine.addStation(B);
+        blueLine.addStation(C);
+        blueLine.addStation(D);
+
+        stationIndex.addLine(blueLine);
+        stationIndex.addStation(A);
+        stationIndex.addStation(B);
+        stationIndex.addStation(C);
+        stationIndex.addStation(D);
+    }
+
 }
